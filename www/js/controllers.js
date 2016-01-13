@@ -18,7 +18,8 @@ app.controller('indexController', function($scope) {
 	}
 });
 
-app.controller('listController', function($scope,$ionicSlideBoxDelegate){
+app.controller('listController', function($scope,$ionicSlideBoxDelegate,BusinessList){
+	 
 	 $scope.businessList = [
 		 {
 			 title:'Vertige Fleurs',
@@ -50,17 +51,40 @@ app.controller('listController', function($scope,$ionicSlideBoxDelegate){
 			 tel:'05.46.29.65.00 / 06.16.11.68.01', 
 			 url:'www.vertige-iledere.frrrr'
 		 }];
-	
-	$scope.slideHasChanged = function($in){
-		console.log($in)
-	}
-	$scope.pagerClicked = function($in){
-		console.log($in)
-	}
+	 
 	$scope.Previous = function(){
 		$ionicSlideBoxDelegate.previous();
 	}
 	$scope.Next = function() {
 		$ionicSlideBoxDelegate.next();
 	}
+	
+	$scope.listItems = [];
+	$scope.listCount = 5;
+	
+	BusinessList.getBusiness().then(function($res){
+		$scope.listItems = $res;
+	});
+		
+	$scope.loadMore = function(){
+		console.log('dfff')
+		$scope.listCount = 10;
+		$scope.listItems = $scope.listItems.concat($res);
+
+		$scope.$broadcast('scroll.infiniteScrollComplete');
+
+		}
+});
+
+app.factory('BusinessList',function($http){
+		var jsonData = 'http://localhost:8100/data.json';
+		var items = [];
+		return {
+			getBusiness : function(){				
+				return $http.get(jsonData).then(function(response){
+					items = response.data.businessList;
+					return items;
+				});
+			}
+		}
 });
