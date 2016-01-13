@@ -2,16 +2,28 @@
   <ion-content>
 	 <img class="logo" src="../img/loog.png" alt="Logo"/>
      
-	 <form ng-submit="searcForm()">
+	 <form class="searhForm" ng-submit="searcForm()" action="#/app/listing">
 		  <div class="list list-inset">
 			  <label class="item item-input">
-				<input type="text" placeholder="Où voulez-vous aller ?" ng-model="loginData.location1">
+				 <div class="input-label">Où voulez-vous aller ?</div>
+				<input type="text" placeholder="Où voulez-vous aller ?">
 			  </label>
 			  
-			  <label class="item item-input">
+			  <!--<label class="item item-input">
 				<input type="text" placeholder="Où voulez-vous aller ?" ng-model="loginData.location2">
-			  </label>
+			  </label>-->
 			  
+			   <label class="item item-input item-select">
+				<div class="input-label">
+				  Choose
+				</div>
+				<select>
+				  <option value="Option1">Option1</option>
+				  <option value="Option2" selected>Option2</option>
+				  <option value="Option3">Option3</option>
+				</select>
+			  </label>
+			   
 			  <button class="button button-block button-calm" type="submit">Search</button>
 		  </div>
 		</form>

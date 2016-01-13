@@ -22,6 +22,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
+
+
 .config(function($stateProvider, $urlRouterProvider) {
 	
   console.log($urlRouterProvider);
@@ -34,7 +36,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'appController'
   })
 
-    .state('app.playlists', {
+  .state('app.playlists', {
       url: '/playlists',
       views: {
         'menuContent': {
@@ -43,6 +45,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+  .state('app.listing',{
+	  url : '/listing',
+	  views:{
+		  'menuContent' : {
+			templateUrl : 'templates/listing.html',
+			controller : 'listController'
+		  }
+	  }
+  })
  	
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');

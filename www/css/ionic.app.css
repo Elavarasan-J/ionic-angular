@@ -9734,3 +9734,50 @@ a.button {
 .logo {
   margin: 0 auto;
   display: block; }
+
+.business-list-wrapper > h2 {
+  margin-bottom: 7px; }
+
+.business-list-wrapper p {
+  white-space: normal;
+  margin-bottom: 15px; }
+
+.business-list-wrapper > img {
+  margin-bottom: 10px;
+  border-radius: 2px; }
+
+.list-inner-content {
+  margin-bottom: 15px; }
+  .list-inner-content > p {
+    margin-bottom: 5px; }
+
+.slider {
+  margin-bottom: 15px; }
+
+.slidebox-wrapper {
+  position: relative; }
+
+.slidebox-wrapper:hover .prev, .slidebox-wrapper:hover .next {
+  opacity: 1; }
+
+.slidebox-wrapper .prev, .slidebox-wrapper .next {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 3;
+  top: 49%;
+  color: #fff;
+  opacity: 0;
+  padding: 0 5px;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  transition: all 0.3s linear; }
+  .slidebox-wrapper .prev:hover, .slidebox-wrapper .next:hover {
+    background-color: rgba(0, 0, 0, 0.8); }
+
+.slidebox-wrapper .prev {
+  left: 0; }
+
+.slidebox-wrapper .next {
+  right: 0; }

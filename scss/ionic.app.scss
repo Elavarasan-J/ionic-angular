@@ -26,3 +26,77 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	margin: 0 auto;
 	display: block;
 }
+.business-list-wrapper
+{
+	>h2
+	{
+		margin-bottom: 7px;
+	}
+	p
+	{
+		white-space: normal;
+		margin-bottom: 15px;
+	}
+	>img
+	{
+		margin-bottom: 10px;
+		border-radius: 2px;
+	}
+}
+
+.list-inner-content
+{
+	margin-bottom: 15px;
+	>p
+	{
+		margin-bottom: 5px;
+	}
+}
+.slider
+{
+	margin-bottom: 15px;
+}
+.slidebox-wrapper
+{
+	position: relative;
+}
+.slidebox-wrapper
+{
+	&:hover
+	{
+		.prev,.next
+		{
+			opacity: 1;
+		}
+	}
+}
+.slidebox-wrapper
+{
+	.prev,.next
+	{
+		border: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		position: absolute;
+		z-index: 3;
+		top: 49%;
+		color: #fff;
+		opacity: 0;
+		padding: 0 5px;
+		-webkit-transition:all 0.3s linear;
+		-moz-transition:all 0.3s linear;
+		-ms-transition:all 0.3s linear;
+		transition: all 0.3s linear;
+		&:hover
+		{
+			background-color: rgba(0,0,0,0.8);
+		}
+	}
+	.prev
+	{
+		left: 0;
+	}
+	.next
+	{
+		right: 0;
+	}
+}

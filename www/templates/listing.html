@@ -1,0 +1,36 @@
+<ion-view view-title="iledere apps">
+	<ion-content>
+		<ion-list>
+			<ion-item ng-repeat="list in businessList">
+				<div class="business-list-wrapper">
+					<h2>{{list.title}}</h2>
+					<p>{{list.desc}}</p>
+					
+					<!--<ion-slide-box
+						<img ng-repeat="img in list.images" class="full-image" src={{img.imgURL}}>
+					</ion-slide-box>-->
+					
+					
+					<div class="slidebox-wrapper">
+						<button class="prev" ng-click="Previous();"><i class="icon ion-chevron-left"></i></button>
+						<button class="next" ng-click="Next();"><i class="icon ion-chevron-right"></i></button>
+						<ion-slide-box show-pager=false does-continue=true on-slide-changed="slideHasChanged($index)">
+						  <ion-slide ng-repeat="img in list.images" >
+							<img class="full-image" src={{img.imgURL}}>
+						  </ion-slide>
+						</ion-slide-box>
+					</div>
+					
+					<div class="list-inner-content">
+						<p>Tél : {{list.tel}}</p>
+						<p>E-mail : {{list.email}}</p>
+						<p>Site internet : <a href="#">{{list.url}}</a></p>
+					</div>
+					 
+					
+					<button class="button button-calm button-outline">En savoir plus </button>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
