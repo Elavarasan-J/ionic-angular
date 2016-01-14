@@ -18,40 +18,9 @@ app.controller('indexController', function($scope) {
 	}
 });
 
-app.controller('listController', function($scope,$ionicSlideBoxDelegate,BusinessList){
-	 
-	 $scope.businessList = [
-		 {
-			 title:'Vertige Fleurs',
-			 images:[
-				 {
-					 imgURL : 'http://localhost/works/ildere-app/assets/images/slider1.png',
-				 },
-				 {
-					 imgURL : 'http://localhost/works/ildere-app/assets/images/slider2.png',
-				 }
-			 ],
-			 desc:'Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.', 
-			 email :'contact@vertige-iledere.fr', 
-			 tel:'05.46.29.65.00 / 06.16.11.68.01', 
-			 url:'www.vertige-iledere.fr'
-		 },
-		 {
-			 title:'Good Ideas',
-			 images:[
-				 {
-					 imgURL : 'http://localhost/works/ildere-app/assets/images/slider3.png',
-				 },
-				 {
-					 imgURL : 'http://localhost/works/ildere-app/assets/images/slider2.png',
-				 }
-			 ],
-			 desc:'Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.', 
-			 email :'contact@vertige-iledere.fr', 
-			 tel:'05.46.29.65.00 / 06.16.11.68.01', 
-			 url:'www.vertige-iledere.frrrr'
-		 }];
-	 
+
+app.controller('listController', function($scope,$ionicSlideBoxDelegate,BusinessList,$timeout){
+ 	// Slide box
 	$scope.Previous = function(){
 		$ionicSlideBoxDelegate.previous();
 	}
@@ -59,31 +28,45 @@ app.controller('listController', function($scope,$ionicSlideBoxDelegate,Business
 		$ionicSlideBoxDelegate.next();
 	}
 	
-	$scope.listItems = [];
-	$scope.listCount = 5;
 	
-	BusinessList.getBusiness().then(function($res){
-		$scope.listItems = $res;
+	// Infinite scroller
+	$scope.listItems = [];
+	$scope.moreDataAvailable = false;
+	var spliceArray, listLength, arrayLength, start = 0, end = 5;
+	
+	BusinessList.getBusiness().then(function(items){
+		spliceArray = items.splice(start, end);
+		$scope.listItems = spliceArray;
 	});
-		
+	
 	$scope.loadMore = function(){
-		console.log('dfff')
-		$scope.listCount = 10;
-		$scope.listItems = $scope.listItems.concat($res);
+		$timeout(function() {
+			BusinessList.getBusiness().then(function(items){
+				listLength = items.length;
+				arrayLength = $scope.listItems.length;
+				spliceArray = items.splice(arrayLength, end);
 
-		$scope.$broadcast('scroll.infiniteScrollComplete');
+				$scope.listItems = $scope.listItems.concat(spliceArray);		
+				$scope.$broadcast('scroll.infiniteScrollComplete');
 
-		}
+				if(listLength <= $scope.listItems.length){
+					$scope.moreDataAvailable = true;
+				}
+			});
+  		}, 350);
+	};
+	
 });
 
+// BusinessList factory for Infinite scrolling
 app.factory('BusinessList',function($http){
 		var jsonData = 'http://localhost:8100/data.json';
 		var items = [];
 		return {
 			getBusiness : function(){				
-				return $http.get(jsonData).then(function(response){
+				return $http.get(jsonData).then(function(response){	
 					items = response.data.businessList;
-					return items;
+					return items;					
 				});
 			}
 		}

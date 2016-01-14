@@ -1,7 +1,7 @@
 <ion-view view-title="iledere apps">
 	<ion-content>
 		<ion-list>
-			<ion-item ng-repeat="list in listItems | limitTo : listCount">
+			<ion-item ng-repeat="list in listItems">
 				<div class="business-list-wrapper">
 					<h2>{{list.title}}</h2>
 					<p>{{list.desc}}</p>
@@ -17,7 +17,7 @@
 					</div>
 					
 					<div class="list-inner-content">
-						<p>Tél : {{list.tel}}</p>
+						<p>Tél : {{list.tel}} </p>
 						<p>E-mail : {{list.email}}</p>
 						<p>Site internet : <a href="#">{{list.url}}</a></p>
 					</div>
@@ -28,7 +28,7 @@
 			</ion-item>
 		</ion-list>
 		
-		<ion-infinite-scroll on-infinite="loadMore()"   distance="3%"></ion-infinite-scroll>
+		<ion-infinite-scroll on-infinite="loadMore()" ng-if="!moreDataAvailable" immediate-check=false distance="3%"></ion-infinite-scroll>
 		
 	</ion-content>
 </ion-view>

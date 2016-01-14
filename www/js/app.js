@@ -26,8 +26,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 	
-  console.log($urlRouterProvider);
-	
   $stateProvider
 	.state('app', {
     url: '/app',
