@@ -4,7 +4,8 @@
 			<ion-item ng-repeat="list in listItems">
 				<div class="business-list-wrapper">
 					<h2>{{list.title}}</h2>
-					<p>{{list.desc}}</p>
+					<!--<p>{{list.desc}}</p>-->
+					<p>{{ list.desc | limitTo: 120 }}...</p>
 					 
 					<div class="slidebox-wrapper">
 						<button class="prev" ng-click="Previous();"><i class="icon ion-chevron-left"></i></button>
@@ -22,7 +23,7 @@
 						<p>Site internet : <a href="#">{{list.url}}</a></p>
 					</div>
 					
-					<button class="button button-calm button-outline">En savoir plus </button>
+					<button class="button button-calm button-outline" ng-click="viewMore($index)">En savoir plus </button>
 					
 				</div>
 			</ion-item>

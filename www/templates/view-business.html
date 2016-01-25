@@ -1,0 +1,40 @@
+<ion-view view-title="iledere apps">
+	<ion-content>
+		<ion-list>
+			<ion-item ng-repeat="list in listItems | limitTo:1">
+				<div class="business-list-wrapper">
+					<h2>{{list.title}}</h2>
+					<p class="text-blue">{{list.city}}</p>
+					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+					<div class="list-inner-content">
+						<p>
+							{{list.address1}}
+							<br>
+							{{list.address2}}
+						</p>
+						<p>Tél : {{list.tel}} </p>
+						<p>Fax : {{list.fax}} </p>
+					</div>
+					
+					<!--<p>{{ list.desc | limitTo: 120 }}...</p>
+					 
+					<div class="slidebox-wrapper">
+						<button class="prev" ng-click="Previous();"><i class="icon ion-chevron-left"></i></button>
+						<button class="next" ng-click="Next();"><i class="icon ion-chevron-right"></i></button>
+						<ion-slide-box show-pager=false does-continue=true>
+						  <ion-slide ng-repeat="img in list.images" >
+							<img class="full-image" src={{img.imgURL}}>
+						  </ion-slide>
+						</ion-slide-box>
+					</div>-->
+					
+					<button class="button button-calm button-outline" ng-click="viewMore($index)">En savoir plus </button>
+					
+				</div>
+			</ion-item>
+		</ion-list>
+		
+		<ion-infinite-scroll on-infinite="loadMore()" ng-if="!moreDataAvailable" immediate-check=false distance="3%"></ion-infinite-scroll>
+		
+	</ion-content>
+</ion-view>

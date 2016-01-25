@@ -6,10 +6,7 @@ app.controller('appController', function($scope, $ionicModal, $timeout) {
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
-  
-/*	$scope.$on('$ionicView.enter', function(e) {
-		console.log(e);
-  	});*/
+	
 });
 
 app.controller('indexController', function($scope) {
@@ -19,7 +16,8 @@ app.controller('indexController', function($scope) {
 });
 
 
-app.controller('listController', function($scope,$ionicSlideBoxDelegate,BusinessList,$timeout){
+app.controller('listController', function($scope,$ionicSlideBoxDelegate,BusinessList,$timeout,$location){
+	
  	// Slide box
 	$scope.Previous = function(){
 		$ionicSlideBoxDelegate.previous();
@@ -32,7 +30,7 @@ app.controller('listController', function($scope,$ionicSlideBoxDelegate,Business
 	// Infinite scroller
 	$scope.listItems = [];
 	$scope.moreDataAvailable = false;
-	var spliceArray, listLength, arrayLength, start = 0, end = 5;
+	var spliceArray, listLength, arrayLength, start = 0, end = 5, listIndex;
 	
 	BusinessList.getBusiness().then(function(items){
 		spliceArray = items.splice(start, end);
@@ -42,6 +40,7 @@ app.controller('listController', function($scope,$ionicSlideBoxDelegate,Business
 	$scope.loadMore = function(){
 		$timeout(function() {
 			BusinessList.getBusiness().then(function(items){
+				$scope.listItems = items;
 				listLength = items.length;
 				arrayLength = $scope.listItems.length;
 				spliceArray = items.splice(arrayLength, end);
@@ -55,6 +54,21 @@ app.controller('listController', function($scope,$ionicSlideBoxDelegate,Business
 			});
   		}, 350);
 	};
+	
+	
+	// View more
+	$scope.viewMore = function(index){
+		$location.url('app/view-business');
+		listIndex = $scope.listItems[index];
+		console.log(listIndex);
+	}
+	
+	/*$scope.viewMore = function(index){
+		$scope.listItems[index];
+		console.log($scope.listItems[index])
+	}*/
+	
+	/*console.log($scope.listItems[index]);*/
 	
 });
 

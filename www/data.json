@@ -2,6 +2,9 @@
 "businessList":[
 		 {
 			 "title" :"Title 1",
+			 "city" : "Loix",
+			 "address1":"BP 21",
+			 "address2":"17111 Loix",
 			 "images":[
 				 {
 					 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider1.png"
@@ -12,11 +15,15 @@
 			 ],
 			 "desc":"Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 			 "email" :"contact@vertige-iledere.fr", 
-			 "tel":"05.46.29.65.00 / 06.16.11.68.01", 
-			 "url":"www.vertige-iledere.fr"
+			 "tel":"05.46.29.65.00", 
+			 "url":"www.vertige-iledere.fr",
+			 "fax":"06.16.11.68.01"
 		 },
 		 {
 			 "title" :"Title 2",
+			 "city" : "Loix",
+			 "address1":"BP 21",
+			 "address2":"17111 Loix",
 			 "images":[
 				 {
 					 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -27,11 +34,15 @@
 			 ],
 			 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 			 "email" : "contact@vertige-iledere.fr", 
-			 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-			 "url" :"www.vertige-iledere.frrrr"
+			 "tel" : "05.46.29.65.00", 
+			 "url" :"www.vertige-iledere.frrrr",
+			 "fax":"06.16.11.68.01"
 		 },
 		 {
 			 "title" :"Title 3",
+			 "city" : "Loix",
+			 "address1":"BP 21",
+			 "address2":"17111 Loix",
 			 "images":[
 				 {
 					 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider1.png"
@@ -42,11 +53,15 @@
 			 ],
 			 "desc":"Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 			 "email" :"contact@vertige-iledere.fr", 
-			 "tel":"05.46.29.65.00 / 06.16.11.68.01", 
-			 "url":"www.vertige-iledere.fr"
+			 "tel":"05.46.29.65.00", 
+			 "url":"www.vertige-iledere.fr",
+			 "fax":"06.16.11.68.01"
 		 },
 		 {
 			 "title" :"Title 4",
+			 "city" : "Loix",
+			 "address1":"BP 21",
+			 "address2":"17111 Loix",
 			 "images":[
 				 {
 					 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -57,11 +72,15 @@
 			 ],
 			 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 			 "email" : "contact@vertige-iledere.fr", 
-			 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-			 "url" :"www.vertige-iledere.frrrr"
+			 "tel" : "05.46.29.65.00", 
+			 "url" :"www.vertige-iledere.frrrr",
+			 "fax":"06.16.11.68.01"
 		 },
 		 {
 			 "title" :"Title 5",
+			 "city" : "Loix",
+			 "address1":"BP 21",
+			 "address2":"17111 Loix",
 			 "images":[
 				 {
 					 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider1.png"
@@ -72,11 +91,15 @@
 			 ],
 			 "desc":"Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 			 "email" :"contact@vertige-iledere.fr", 
-			 "tel":"05.46.29.65.00 / 06.16.11.68.01", 
-			 "url":"www.vertige-iledere.fr"
+			 "tel":"05.46.29.65.00", 
+			 "url":"www.vertige-iledere.fr",
+			 "fax":"06.16.11.68.01"
 		 },
 		 {
 			 "title" :"Title 6",
+			 "city" : "Loix",
+			 "address1":"BP 21",
+			 "address2":"17111 Loix",
 			 "images":[
 				 {
 					 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -87,11 +110,15 @@
 			 ],
 			 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 			 "email" : "contact@vertige-iledere.fr", 
-			 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-			 "url" :"www.vertige-iledere.frrrr"
+			 "tel" : "05.46.29.65.00", 
+			 "url" :"www.vertige-iledere.frrrr",
+			 "fax":"06.16.11.68.01"
 		 },
 		 {
 				 "title" :"Title 7",
+			 	 "city" : "Loix",
+			 	 "address1":"BP 21",
+			 	 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider1.png"
@@ -102,11 +129,15 @@
 				 ],
 				 "desc":"Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" :"contact@vertige-iledere.fr", 
-				 "tel":"05.46.29.65.00 / 06.16.11.68.01", 
-				 "url":"www.vertige-iledere.fr"
+				 "tel":"05.46.29.65.00", 
+				 "url":"www.vertige-iledere.fr",
+			  	 "fax":"06.16.11.68.01"
 			 },
 			 {
 				 "title" :"Title 8",
+				 "city" : "Loix",
+				 "address1":"BP 21",
+				 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -117,11 +148,15 @@
 				 ],
 				 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" : "contact@vertige-iledere.fr", 
-				 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-				 "url" :"www.vertige-iledere.frrrr"
+				 "tel" : "05.46.29.65.00", 
+				 "url" :"www.vertige-iledere.frrrr",
+				 "fax":"06.16.11.68.01"
 			},
 			{
 				 "title" :"Title 9",
+				 "city" : "Loix",
+				 "address1":"BP 21",
+				 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider1.png"
@@ -132,11 +167,15 @@
 				 ],
 				 "desc":"Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" :"contact@vertige-iledere.fr", 
-				 "tel":"05.46.29.65.00 / 06.16.11.68.01", 
-				 "url":"www.vertige-iledere.fr"
+				 "tel":"05.46.29.65.00", 
+				 "url":"www.vertige-iledere.fr",
+				 "fax":"06.16.11.68.01"
 			 },
 			 {
 				 "title" :"Title 10",
+				 "city" : "Loix",
+				 "address1":"BP 21",
+				 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -147,11 +186,15 @@
 				 ],
 				 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" : "contact@vertige-iledere.fr", 
-				 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-				 "url" :"www.vertige-iledere.frrrr"
+				 "tel" : "05.46.29.65.00", 
+				 "url" :"www.vertige-iledere.frrrr",
+				 "fax":"06.16.11.68.01"
 			 },
 			{
 			 "title" :"Title 11",
+			 "city" : "Loix",
+			 "address1":"BP 21",
+			 "address2":"17111 Loix",
 			 "images":[
 				 {
 					 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -162,11 +205,15 @@
 			 ],
 			 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 			 "email" : "contact@vertige-iledere.fr", 
-			 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-			 "url" :"www.vertige-iledere.frrrr"
+			 "tel" : "05.46.29.65.00", 
+			 "url" :"www.vertige-iledere.frrrr",
+			 "fax":"06.16.11.68.01"
 		 },
 		 {
 				 "title" :"Title 12",
+			 	 "city" : "Loix",
+			 	 "address1":"BP 21",
+			 	 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider1.png"
@@ -177,11 +224,15 @@
 				 ],
 				 "desc":"Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" :"contact@vertige-iledere.fr", 
-				 "tel":"05.46.29.65.00 / 06.16.11.68.01", 
-				 "url":"www.vertige-iledere.fr"
+				 "tel":"05.46.29.65.00", 
+				 "url":"www.vertige-iledere.fr",
+			  	 "fax":"06.16.11.68.01"
 			 },
 			 {
 				 "title" :"Title 13",
+				 "city" : "Loix",
+				 "address1":"BP 21",
+				 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -192,11 +243,15 @@
 				 ],
 				 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" : "contact@vertige-iledere.fr", 
-				 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-				 "url" :"www.vertige-iledere.frrrr"
+				 "tel" : "05.46.29.65.00", 
+				 "url" :"www.vertige-iledere.frrrr",
+				 "fax":"06.16.11.68.01"
 			},
 			{
 				 "title" :"Title 14",
+				 "city" : "Loix",
+				 "address1":"BP 21",
+				 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider1.png"
@@ -207,11 +262,15 @@
 				 ],
 				 "desc":"Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" :"contact@vertige-iledere.fr", 
-				 "tel":"05.46.29.65.00 / 06.16.11.68.01", 
-				 "url":"www.vertige-iledere.fr"
+				 "tel":"05.46.29.65.00", 
+				 "url":"www.vertige-iledere.fr",
+				 "fax":"06.16.11.68.01"
 			 },
 			  {
 				 "title" :"Title 15",
+				 "city" : "Loix",
+				 "address1":"BP 21",
+				 "address2":"17111 Loix",
 				 "images":[
 					 {
 						 "imgURL" : "http://localhost/works/ildere-app/assets/images/slider3.png"
@@ -222,8 +281,9 @@
 				 ],
 				 "desc" : "Vertige vous propose toute l’année des plantes d’intérieur et d’extérieur, des bouquets, des fleurs coupées, des compositions pour tout vos événements familiaux, décoration. Livraison à domicile sur Ars et tout le Nord de l’île de Ré.", 
 				 "email" : "contact@vertige-iledere.fr", 
-				 "tel" : "05.46.29.65.00 / 06.16.11.68.01", 
-				 "url" :"www.vertige-iledere.frrrr"
+				 "tel" : "05.46.29.65.00", 
+				 "url" :"www.vertige-iledere.frrrr",
+				 "fax":"06.16.11.68.01"
 			 }
 	]
 }

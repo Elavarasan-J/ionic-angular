@@ -9736,7 +9736,13 @@ a.button {
   display: block; }
 
 .business-list-wrapper > h2 {
-  margin-bottom: 7px; }
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 24px; }
+
+.business-list-wrapper .text-blue {
+  color: #3498d8; }
 
 .business-list-wrapper p {
   white-space: normal;
@@ -9781,3 +9787,6 @@ a.button {
 
 .slidebox-wrapper .next {
   right: 0; }
+
+.angular-google-map-container {
+  height: 400px; }
