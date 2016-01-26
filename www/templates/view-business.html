@@ -1,5 +1,5 @@
 <ion-view view-title="iledere apps">
-	<ion-content>
+	<ion-content>		 
 		<ion-list>
 			<ion-item ng-repeat="list in listItems | limitTo:1">
 				<div class="business-list-wrapper">
@@ -13,11 +13,11 @@
 							{{list.address2}}
 						</p>
 						<p>Tél : {{list.tel}} </p>
-						<p>Fax : {{list.fax}} </p>
 					</div>
 					
+					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+					
 					<!--<p>{{ list.desc | limitTo: 120 }}...</p>
-					 
 					<div class="slidebox-wrapper">
 						<button class="prev" ng-click="Previous();"><i class="icon ion-chevron-left"></i></button>
 						<button class="next" ng-click="Next();"><i class="icon ion-chevron-right"></i></button>

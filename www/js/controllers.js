@@ -9,24 +9,22 @@ app.controller('appController', function($scope, $ionicModal, $timeout) {
 	
 });
 
-app.controller('indexController', function($scope) {
-	$scope.searcForm = function(e){
-		console.log('Form submitted');
+app.constant('ApiEndpoint', {
+  url: 'http://ec2-52-23-151-147.compute-1.amazonaws.com/api.php'
+})
+ 
+app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegate, BusinessList, $timeout, $location){	
+	$scope.searcForm = function($searchItem){
+		/*console.log($searchItem);*/
+		BusinessList.getSearchBusiness($searchItem).then(function(response){
+			console.log(response);
+			items = response.data.businessList;
+			return items;	
+		});
+		/*$state.go('app.view-business');*/
 	}
-});
-
-
-app.controller('listController', function($scope,$ionicSlideBoxDelegate,BusinessList,$timeout,$location){
-	
- 	// Slide box
-	$scope.Previous = function(){
-		$ionicSlideBoxDelegate.previous();
-	}
-	$scope.Next = function() {
-		$ionicSlideBoxDelegate.next();
-	}
-	
-	
+	  
+/*
 	// Infinite scroller
 	$scope.listItems = [];
 	$scope.moreDataAvailable = false;
@@ -61,27 +59,27 @@ app.controller('listController', function($scope,$ionicSlideBoxDelegate,Business
 		$location.url('app/view-business');
 		listIndex = $scope.listItems[index];
 		console.log(listIndex);
-	}
-	
-	/*$scope.viewMore = function(index){
-		$scope.listItems[index];
-		console.log($scope.listItems[index])
 	}*/
-	
-	/*console.log($scope.listItems[index]);*/
 	
 });
 
 // BusinessList factory for Infinite scrolling
-app.factory('BusinessList',function($http){
-		var jsonData = 'http://localhost:8100/data.json';
+app.factory('BusinessList',function($http, ApiEndpoint){
+	
+	/*console.log(ApiEndpoint);*/
+	
+		var jsonData = ApiEndpoint.url;
 		var items = [];
+	 	console.log(jsonData)
 		return {
 			getBusiness : function(){				
 				return $http.get(jsonData).then(function(response){	
 					items = response.data.businessList;
 					return items;					
 				});
+			},
+			getSearchBusiness : function($searchItem){
+				return $http.get(jsonData+'?q='+$searchItem);				
 			}
 		}
 });

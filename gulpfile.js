@@ -6,12 +6,34 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var replace = require('replace');
+var replaceFiles = ['./www/js/app.js'];
 
 var paths = {
   sass: ['./scss/**/*.scss']
 };
 
 gulp.task('default', ['sass']);
+
+gulp.task('add-proxy', function() {
+  return replace({
+    regex: "http://ec2-52-23-151-147.compute-1.amazonaws.com/api.php",
+    replacement: "http://localhost:8100/app/playlists",
+    paths: replaceFiles,
+    recursive: false,
+    silent: false,
+  });
+})
+
+gulp.task('remove-proxy', function() {
+  return replace({
+    regex: "http://localhost:8100/app/playlists",
+    replacement: "http://ec2-52-23-151-147.compute-1.amazonaws.com/api.php",
+    paths: replaceFiles,
+    recursive: false,
+    silent: false,
+  });
+})
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')

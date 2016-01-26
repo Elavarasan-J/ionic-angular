@@ -23,8 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
 .config(function($stateProvider, $urlRouterProvider) {
-	
-  
+
   $stateProvider
 	.state('app', {
     url: '/app',
@@ -46,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 	  views:{
 		  'menuContent' : {
 			templateUrl : 'templates/listing.html',
-			controller : 'listController'
+			controller : 'indexController'
 		  }
 	  }
   })
@@ -55,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 	  views:{
 		  'menuContent':{
 			 templateUrl : 'templates/view-business.html',
-			 controller : 'listController'
+			 controller : 'indexController'
 		  }
 	  }
   })
