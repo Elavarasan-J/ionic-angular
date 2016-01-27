@@ -1,24 +1,20 @@
-<ion-view view-title="iledere apps">
+<ion-view view-title="Search : {{viewTitle}}" hide-back-button=false>
 	<ion-content>		 
 		<ion-list>
 			<ion-item ng-repeat="list in listItems">
-				<div class="business-list-wrapper" ng-class="{'hide': list.error}">
-					
+				<div class="business-list-wrapper">
 					<h2>{{list.nom}}</h2>
 					<p class="text-blue">{{list.ville}}</p>
-					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+					<!--<input id="address" marker-map type="text" placeholder="Enter an address">-->
+					<div id="map"></div>
 					<div class="list-inner-content">
 						<p>{{list.adresse}}</p>
 						<p>{{list.cp}} {{list.ville}}</p>
 						<p ng-if="list.tel!=''" ng-class="{ 'hide' : !list.tel }">Tel : {{list.tel}} </p>
 						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
 					</div>
-					
-					<p ng-if="!list.error">No business found</p>
-					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-					
-					<!--<button class="button button-calm button-outline" ng-click="viewMore($index)">En savoir plus </button>-->
-					
+					<p ng-if="!list.error">No business Found</p>
+				
 				</div>
 			</ion-item>
 		</ion-list>

@@ -13,6 +13,7 @@ app.controller('appController', function($scope, $ionicModal, $timeout) {
 app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegate, BusinessService, $timeout, $location, $rootScope){	
 	
 	$scope.listItems = [];
+	$scope.viewTitle = '';
 	$scope.moreDataAvailable = false;
 	var spliceArray, listLength, arrayLength, start = 0, end = 5, listIndex;
 	
@@ -60,10 +61,12 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 
 // viewBusinessController
  
-app.controller('viewBusinessController', function($scope, $stateParams, BusinessService, $rootScope){
-
+app.controller('viewBusinessController', function($scope, $stateParams, BusinessService, $rootScope,$ionicHistory){
+	
 	BusinessService.getSearchBusiness($stateParams.searchItem).then(function(response){
+			$scope.viewTitle = $stateParams.searchItem;
 			$scope.listItems = response.data.business_list;
+			console.log($scope.viewTitle);
 		});
 });
 

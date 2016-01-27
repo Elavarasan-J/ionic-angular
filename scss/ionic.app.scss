@@ -108,3 +108,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	}
 }
 .angular-google-map-container { height: 400px; }
+.back-button
+{
+	.back-text
+	{
+		display: none !important;
+	}
+}
