@@ -2,7 +2,7 @@
 	<ion-content>		 
 		<ion-list>
 			<ion-item ng-repeat="list in listItems">
-				<div class="business-list-wrapper">
+				<div class="business-list-wrapper" ng-class="{'hide': list.error}">
 					
 					<h2>{{list.nom}}</h2>
 					<p class="text-blue">{{list.ville}}</p>
