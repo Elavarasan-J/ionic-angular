@@ -1,34 +1,23 @@
 <ion-view view-title="iledere apps">
 	<ion-content>		 
 		<ion-list>
-			<ion-item ng-repeat="list in listItems | limitTo:1">
+			<ion-item ng-repeat="list in listItems">
 				<div class="business-list-wrapper">
-					<h2>{{list.title}}</h2>
-					<p class="text-blue">{{list.city}}</p>
+					
+					<h2>{{list.nom}}</h2>
+					<p class="text-blue">{{list.ville}}</p>
 					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
 					<div class="list-inner-content">
-						<p>
-							{{list.address1}}
-							<br>
-							{{list.address2}}
-						</p>
-						<p>Tél : {{list.tel}} </p>
+						<p>{{list.adresse}}</p>
+						<p>{{list.cp}} {{list.ville}}</p>
+						<p ng-if="list.tel!=''" ng-class="{ 'hide' : !list.tel }">Tel : {{list.tel}} </p>
+						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
 					</div>
 					
+					<p ng-if="!list.error">No business found</p>
 					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
 					
-					<!--<p>{{ list.desc | limitTo: 120 }}...</p>
-					<div class="slidebox-wrapper">
-						<button class="prev" ng-click="Previous();"><i class="icon ion-chevron-left"></i></button>
-						<button class="next" ng-click="Next();"><i class="icon ion-chevron-right"></i></button>
-						<ion-slide-box show-pager=false does-continue=true>
-						  <ion-slide ng-repeat="img in list.images" >
-							<img class="full-image" src={{img.imgURL}}>
-						  </ion-slide>
-						</ion-slide-box>
-					</div>-->
-					
-					<button class="button button-calm button-outline" ng-click="viewMore($index)">En savoir plus </button>
+					<!--<button class="button button-calm button-outline" ng-click="viewMore($index)">En savoir plus </button>-->
 					
 				</div>
 			</ion-item>

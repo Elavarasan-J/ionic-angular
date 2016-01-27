@@ -8,11 +8,5 @@
   "watchPatterns": [
     "www/**/*",
     "!www/lib/**/*"
-  ],
-  "proxies": [
-    {
-	  "path":"",
-      "proxyUrl": "http://ec2-52-23-151-147.compute-1.amazonaws.com/api.php"
-    }
   ]
 }

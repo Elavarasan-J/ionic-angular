@@ -50,11 +50,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 	  }
   })
   .state('app.view-business',{
-	  url: '/view-business',
+	  url: '/view-business/:searchItem',
 	  views:{
 		  'menuContent':{
 			 templateUrl : 'templates/view-business.html',
-			 controller : 'indexController'
+			 controller : 'viewBusinessController'
 		  }
 	  }
   })
