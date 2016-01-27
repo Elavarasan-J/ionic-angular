@@ -1,22 +1,28 @@
 <ion-view view-title="Search : {{viewTitle}}" hide-back-button=false>
 	<ion-content>		 
 		<ion-list>
-			<ion-item ng-repeat="list in listItems">
+			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
 				<div class="business-list-wrapper">
-					<h2>{{list.nom}}</h2>
+					<h2 ng-click="">{{list.nom}}</h2>
 					<p class="text-blue">{{list.ville}}</p>
-					<!--<input id="address" marker-map type="text" placeholder="Enter an address">-->
-					<div id="map"></div>
+					
+					<!--<ng-map class="mb20" zoom="1">
+						<marker position="48.8567,2.3508"></marker>
+					</ng-map>-->
+					
 					<div class="list-inner-content">
 						<p>{{list.adresse}}</p>
 						<p>{{list.cp}} {{list.ville}}</p>
 						<p ng-if="list.tel!=''" ng-class="{ 'hide' : !list.tel }">Tel : {{list.tel}} </p>
 						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
 					</div>
-					<p ng-if="!list.error">No business Found</p>
-				
 				</div>
 			</ion-item>
+			
+			<ion-item ng-if="listItems.error == 'Not found'">
+				<p>No business Found</p>
+			</ion-item>
+			
 		</ion-list>
 		
 		<ion-infinite-scroll on-infinite="loadMore()" ng-if="!moreDataAvailable" immediate-check=false distance="3%"></ion-infinite-scroll>

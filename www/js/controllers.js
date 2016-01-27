@@ -1,4 +1,4 @@
-var app = angular.module('starter.controllers', []);
+var app = angular.module('starter.controllers', ['ngMap']);
 
 app.controller('appController', function($scope, $ionicModal, $timeout) {
 
@@ -18,7 +18,7 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 	var spliceArray, listLength, arrayLength, start = 0, end = 5, listIndex;
 	
 	$scope.searcForm = function($searchItem){		
-		$state.go('app.view-business', {searchItem : $searchItem});
+		$state.go('app.listing', {searchItem : $searchItem});
 	}
 
 	// Infinite scroller
@@ -61,13 +61,18 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 
 // viewBusinessController
  
-app.controller('viewBusinessController', function($scope, $stateParams, BusinessService, $rootScope,$ionicHistory){
+app.controller('viewBusinessController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, NgMap){
 	
 	BusinessService.getSearchBusiness($stateParams.searchItem).then(function(response){
 			$scope.viewTitle = $stateParams.searchItem;
 			$scope.listItems = response.data.business_list;
-			console.log($scope.viewTitle);
+			console.log($scope.listItems.error)
+			/*console.log($scope.viewTitle);*/
 		});
+	
+	NgMap.getMap().then(function(map) {
+		console.log('Executed !')
+	});
 });
 
 // BusinessService factory for Infinite scrolling

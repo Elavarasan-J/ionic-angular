@@ -65,7 +65,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     controller: 'appController'
   })
   .state('app.playlists', {
-      url: '/playlists',
+      url: '/search',
       views: {
         'menuContent': {
           templateUrl: 'templates/search.html',
@@ -74,16 +74,16 @@ google.maps.event.addDomListener(window, 'load', initialize);
       }
     })
   .state('app.listing',{
-	  url : '/listing',
+	  url : '/listing/:searchItem',
 	  views:{
 		  'menuContent' : {
 			templateUrl : 'templates/listing.html',
-			controller : 'indexController'
+			controller : 'viewBusinessController'
 		  }
 	  }
   })
   .state('app.view-business',{
-	  url: '/view-business/:searchItem',
+	  url: '/view-business',
 	  views:{
 		  'menuContent':{
 			 templateUrl : 'templates/view-business.html',
@@ -93,5 +93,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
   })
  	
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/search');
 });

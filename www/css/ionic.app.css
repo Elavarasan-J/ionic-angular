@@ -9788,8 +9788,8 @@ a.button {
 .slidebox-wrapper .next {
   right: 0; }
 
-.angular-google-map-container {
-  height: 400px; }
-
 .back-button .back-text {
   display: none !important; }
+
+.mb20 {
+  margin-bottom: 20px; }
