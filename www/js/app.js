@@ -72,9 +72,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
           controller: 'indexController'
         },
 		'sideMenuItem':{
-			templateUrl: 'templates/main-menu.html',
+			templateUrl: 'templates/side-menu.html',
 			controller: 'navigationController'
 		}
+      }
+    })
+  .state('app.submenu', {
+      url: '/sub-menu',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/sub-menu.html',
+		  controller: 'navigationController'
+        }
       }
     })
   .state('app.festival', {

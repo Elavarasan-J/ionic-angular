@@ -89,7 +89,7 @@ app.controller('navigationController',function($scope, $ionicHistory, $state){
 	}
 	$scope.categorySearch = function($ev){
 		var catValue = $ev.target.innerHTML;
-		$state.go('app.listing', {searchItem : catValue});		
+		$state.go('app.listing', {searchItem : catValue.trim()});		
 	}
 	
 })
