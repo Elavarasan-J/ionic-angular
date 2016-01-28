@@ -89,10 +89,10 @@ app.controller('navigationController',function($scope, $ionicHistory, $state){
 	}
 	$scope.categorySearch = function($ev){
 		var catValue = $ev.target.innerHTML;
+		console.log(catValue.trim());
 		$state.go('app.listing', {searchItem : catValue.trim()});		
 	}
-	
-})
+});
 
 
 // BusinessService factory for Infinite scrolling
