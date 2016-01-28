@@ -9793,3 +9793,19 @@ a.button {
 
 .mb20 {
   margin-bottom: 20px; }
+
+.business-name {
+  color: #666;
+  cursor: pointer; }
+
+.no-border {
+  border: 0; }
+
+.m7 > p {
+  margin-bottom: 5px; }
+
+.button.button-custom {
+  min-height: 42px;
+  line-height: 38px;
+  border-radius: 3px;
+  margin: 10px !important; }

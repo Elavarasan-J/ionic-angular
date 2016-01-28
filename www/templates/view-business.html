@@ -1,28 +1,26 @@
-<ion-view view-title="Search : {{viewTitle}}" hide-back-button=false>
+<ion-view view-title="{{listItems.nom}}" hide-back-button=false>
 	<ion-content>		 
 		<ion-list>
-			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
+			<ion-item class="no-border">
 				<div class="business-list-wrapper">
-					<h2 ng-click="">{{list.nom}}</h2>
-					<p class="text-blue">{{list.ville}}</p>
+					<h2 ng-click="">{{listItems.nom}}</h2>
+					<p class="text-blue">{{listItems.ville}}</p>
 					
-					<!--<ng-map class="mb20" zoom="1">
+					<ng-map class="mb20" zoom="1">
 						<marker position="48.8567,2.3508"></marker>
-					</ng-map>-->
+					</ng-map>
 					
-					<div class="list-inner-content">
-						<p>{{list.adresse}}</p>
-						<p>{{list.cp}} {{list.ville}}</p>
-						<p ng-if="list.tel!=''" ng-class="{ 'hide' : !list.tel }">Tel : {{list.tel}} </p>
-						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
+					<div class="list-inner-content m7">
+						<p>{{listItems.adresse}}</p>
+						<p>{{listItems.cp}} {{listItems.ville}}</p>
+						<p ng-if="listItems.tel!=''" ng-class="{ 'hide' : !listItems.tel }">Tel : {{listItems.tel}} </p>
+						<p ng-if="listItems.fax!=''" ng-class="{ 'hide' : !listItems.fax }">Fax : {{listItems.fax}} </p>
+						<p ng-if="listItems.pays !=''" ng-class="{ 'hide' : !listItems.pays }">Pays : {{listItems.pays}} </p>
+						<p ng-if="listItems.categ !=''" ng-class="{ 'hide' : !listItems.categ }">Categ : {{listItems.categ}} </p>
 					</div>
 				</div>
 			</ion-item>
-			
-			<ion-item ng-if="listItems.error == 'Not found'">
-				<p>No business Found</p>
-			</ion-item>
-			
+			 
 		</ion-list>
 		
 		<ion-infinite-scroll on-infinite="loadMore()" ng-if="!moreDataAvailable" immediate-check=false distance="3%"></ion-infinite-scroll>

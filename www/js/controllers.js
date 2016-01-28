@@ -59,21 +59,41 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 	
 });
 
-// viewBusinessController
- 
-app.controller('viewBusinessController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, NgMap){
+// businessListController
+app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, NgMap, $state){
 	
 	BusinessService.getSearchBusiness($stateParams.searchItem).then(function(response){
 			$scope.viewTitle = $stateParams.searchItem;
 			$scope.listItems = response.data.business_list;
-			console.log($scope.listItems.error)
-			/*console.log($scope.viewTitle);*/
 		});
 	
 	NgMap.getMap().then(function(map) {
 		console.log('Executed !')
 	});
+	
+	$scope.viewBusiness = function($index){
+		$state.go('app.view-business',{myParam : $scope.listItems[$index] });
+	}
 });
+
+
+// businessViewController
+app.controller('businessViewController', function($scope, $stateParams, BusinessService, $rootScope, $state){
+	$scope.listItems = $stateParams.myParam;
+	console.log($scope.listItems)
+});
+
+app.controller('navigationController',function($scope, $ionicHistory, $state){
+	$scope.myGoBack = function(){
+		$ionicHistory.goBack();
+	}
+	$scope.categorySearch = function($ev){
+		var catValue = $ev.target.innerHTML;
+		$state.go('app.listing', {searchItem : catValue});		
+	}
+	
+})
+
 
 // BusinessService factory for Infinite scrolling
 app.factory('BusinessService',function($http){

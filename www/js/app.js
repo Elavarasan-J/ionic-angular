@@ -70,6 +70,28 @@ google.maps.event.addDomListener(window, 'load', initialize);
         'menuContent': {
           templateUrl: 'templates/search.html',
           controller: 'indexController'
+        },
+		'sideMenuItem':{
+			templateUrl: 'templates/main-menu.html',
+			controller: 'navigationController'
+		}
+      }
+    })
+  .state('app.festival', {
+      url: '/festival',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/festival-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.nature', {
+      url: '/nature',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/nature-menu.html',
+		  controller: 'navigationController'
         }
       }
     })
@@ -78,16 +100,17 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	  views:{
 		  'menuContent' : {
 			templateUrl : 'templates/listing.html',
-			controller : 'viewBusinessController'
+			controller : 'businessListController'
 		  }
 	  }
   })
   .state('app.view-business',{
 	  url: '/view-business',
+	  params:{ myParam : '' },
 	  views:{
 		  'menuContent':{
 			 templateUrl : 'templates/view-business.html',
-			 controller : 'viewBusinessController'
+			 controller : 'businessViewController'
 		  }
 	  }
   })

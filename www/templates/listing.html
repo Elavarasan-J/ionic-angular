@@ -3,7 +3,7 @@
 		<ion-list>
 			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
 				<div class="business-list-wrapper">
-					<h2 ng-click="">{{list.nom}}</h2>
+					<h2><a ng-click="viewBusiness($index)" class="business-name">{{list.nom}}</a></h2>
 					<p class="text-blue">{{list.ville}}</p>
 					
 					<!--<ng-map class="mb20" zoom="1">
