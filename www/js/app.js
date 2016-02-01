@@ -105,7 +105,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
       }
     })
   .state('app.listing',{
-	  url : '/listing/:searchItem',
+	  url : '/listing/:key/:searchItem',
 	  views:{
 		  'menuContent' : {
 			templateUrl : 'templates/listing.html',
