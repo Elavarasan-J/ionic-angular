@@ -77,11 +77,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		}
       }
     })
-  .state('app.submenu', {
-      url: '/sub-menu',
+  .state('app.discovery', {
+      url: '/discovery',
       views: {
         'sideMenuItem': {
-          templateUrl: 'templates/sub-menu.html',
+          templateUrl: 'templates/discovery-menu.html',
 		  controller: 'navigationController'
         }
       }
@@ -100,6 +100,123 @@ google.maps.event.addDomListener(window, 'load', initialize);
       views: {
         'sideMenuItem': {
           templateUrl: 'templates/nature-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.stay', {
+      url: '/stay',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/stay-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+   .state('app.accommodation', {
+      url: '/accommodation',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/accommodation-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.eat-well', {
+      url: '/eat-well',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/eat-well-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.how-to-come', {
+      url: '/how-to-come',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/how-to-come.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.deplacer', {
+      url: '/deplacer',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/deplacer-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.informer', {
+      url: '/informer',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/informer-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.activities', {
+      url: '/activities',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/activity-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.water-activities', {
+      url: '/water-activities',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/water-acitivity-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.sports-recreation', {
+      url: '/sports-recreation',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/sports-recreation-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+   .state('app.trade', {
+      url: '/trade',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/trade-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.culture', {
+      url: '/culture',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/culture-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.night-world', {
+      url: '/night-world',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/night-world-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.association', {
+      url: '/association',
+      views: {
+        'sideMenuItem': {
+          templateUrl: 'templates/association-menu.html',
 		  controller: 'navigationController'
         }
       }

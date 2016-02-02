@@ -61,7 +61,6 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 });
 
 
-
 // businessListController
 app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, NgMap, $state){
 	
@@ -75,7 +74,7 @@ app.controller('businessListController', function($scope, $stateParams, Business
 	});
 	
 	$scope.viewBusiness = function($index){
-		$state.go('app.view-business',{ myParam : $scope.listItems[$index] });
+		$state.go('app.view-business', { myParam : $scope.listItems[$index] });
 	}
 });
 
