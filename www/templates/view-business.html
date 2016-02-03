@@ -5,11 +5,18 @@
 				<div class="business-list-wrapper">
 					<h2 ng-click="">{{listItems.nom}}</h2>
 					<p class="text-blue">{{listItems.ville}}</p>
-					
-					<ng-map  center="48.8567,2.3508" class="mb20" zoom="14">
-						<marker position="48.8567,2.3508"></marker>
-					</ng-map>
-					
+					<div class="show">
+					 <ng-map class="mb20" zoom="10" center="current-location">
+						<directions
+						  draggable="true"
+						  panel="directions-panel"
+						  travel-mode="DRIVING"
+						  origin="current-location"
+						  destination="{{listItems.latitude}}, {{listItems.longitude}}">
+						</directions>
+					  </ng-map>
+					</div>
+					 
 					<div class="list-inner-content m7">
 						<p>{{listItems.adresse}}</p>
 						<p>{{listItems.cp}} {{listItems.ville}}</p>

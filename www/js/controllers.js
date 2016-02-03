@@ -70,7 +70,7 @@ app.controller('businessListController', function($scope, $stateParams, Business
 	});
 	
 	NgMap.getMap().then(function(map) {
-		console.log('Executed !');
+		console.log(map);
 	});
 	
 	$scope.viewBusiness = function($index){
@@ -82,6 +82,11 @@ app.controller('businessListController', function($scope, $stateParams, Business
 // businessViewController
 app.controller('businessViewController', function($scope, $stateParams, BusinessService, $rootScope, $state){
 	$scope.listItems = $stateParams.myParam;
+	$scope.isShowDirection = false;
+	$scope.getDirection = function(){
+		console.log('GetDirection !');
+		$scope.isShowDirection = true;
+	}
 });
 
 
