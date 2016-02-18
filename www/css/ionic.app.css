@@ -15,6 +15,7 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+/*$item-default-bg:transparent;*/
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -3337,10 +3338,10 @@ body,
   padding: 0;
   color: #000;
   word-wrap: break-word;
-  font-size: 14px;
+  font-size: 16px;
   font-family: -apple-system;
   font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
-  line-height: 20px;
+  line-height: 22px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
   -webkit-user-drag: none;
@@ -3562,7 +3563,7 @@ ion-infinite-scroll {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: #d2e4f8;
   overflow: hidden; }
 
 .view-container {
@@ -3576,7 +3577,7 @@ ion-infinite-scroll {
  * --------------------------------------------------
  */
 p {
-  margin: 0 0 10px; }
+  margin: 0 0 11px; }
 
 small {
   font-size: 85%; }
@@ -3607,8 +3608,8 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  margin-top: 20px;
-  margin-bottom: 10px; }
+  margin-top: 22px;
+  margin-bottom: 11px; }
   h1:first-child, .h1:first-child,
   h2:first-child, .h2:first-child,
   h3:first-child, .h3:first-child {
@@ -3634,65 +3635,65 @@ h3, .h3 {
   h3 + .h3, .h3 + h1, .h3 + .h1,
   .h3 + h2, .h3 + .h2,
   .h3 + h3, .h3 + .h3 {
-    margin-top: 10px; }
+    margin-top: 11px; }
 
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: 10px;
-  margin-bottom: 10px; }
+  margin-top: 11px;
+  margin-bottom: 11px; }
 
 h1, .h1 {
-  font-size: 36px; }
+  font-size: 41px; }
 
 h2, .h2 {
-  font-size: 30px; }
+  font-size: 34px; }
 
 h3, .h3 {
-  font-size: 24px; }
+  font-size: 28px; }
 
 h4, .h4 {
-  font-size: 18px; }
+  font-size: 20px; }
 
 h5, .h5 {
-  font-size: 14px; }
+  font-size: 16px; }
 
 h6, .h6 {
-  font-size: 12px; }
+  font-size: 14px; }
 
 h1 small, .h1 small {
-  font-size: 24px; }
+  font-size: 28px; }
 
 h2 small, .h2 small {
-  font-size: 18px; }
+  font-size: 20px; }
 
 h3 small, .h3 small,
 h4 small, .h4 small {
-  font-size: 14px; }
+  font-size: 16px; }
 
 dl {
-  margin-bottom: 20px; }
+  margin-bottom: 22px; }
 
 dt,
 dd {
-  line-height: 1.42857; }
+  line-height: 1.4; }
 
 dt {
   font-weight: bold; }
 
 blockquote {
-  margin: 0 0 20px;
-  padding: 10px 20px;
+  margin: 0 0 22px;
+  padding: 11px 22px;
   border-left: 5px solid gray; }
   blockquote p {
     font-weight: 300;
-    font-size: 17.5px;
+    font-size: 20px;
     line-height: 1.25; }
   blockquote p:last-child {
     margin-bottom: 0; }
   blockquote small {
     display: block;
-    line-height: 1.42857; }
+    line-height: 1.4; }
     blockquote small:before {
       content: '\2014 \00A0'; }
 
@@ -3704,9 +3705,9 @@ blockquote:after {
 
 address {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   font-style: normal;
-  line-height: 1.42857; }
+  line-height: 1.4; }
 
 a {
   color: #387ef5; }
@@ -5647,7 +5648,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
  * --------------------------------------------------
  */
 .item {
-  border-color: #ddd;
+  border-color: #1b8dd9;
   background-color: #fff;
   color: #444;
   position: relative;
@@ -5748,16 +5749,16 @@ ion-tabs.tabs-color-active-dark .tab-item {
 .item-complex.activated .item-content,
 .item .item-content.active,
 .item .item-content.activated {
-  border-color: #ccc;
-  background-color: #D9D9D9; }
+  border-color: #58a1f3;
+  background-color: #d3e0ef; }
   .item.active.item-complex > .item-content,
   .item.activated.item-complex > .item-content,
   .item-complex.active .item-content.item-complex > .item-content,
   .item-complex.activated .item-content.item-complex > .item-content,
   .item .item-content.active.item-complex > .item-content,
   .item .item-content.activated.item-complex > .item-content {
-    border-color: #ccc;
-    background-color: #D9D9D9; }
+    border-color: #58a1f3;
+    background-color: #d3e0ef; }
   .item.active.item-light,
   .item.activated.item-light,
   .item-complex.active .item-content.item-light,
@@ -7466,20 +7467,20 @@ ion-slides {
  * --------------------------------------------------
  */
 form {
-  margin: 0 0 1.42857; }
+  margin: 0 0 1.4; }
 
 legend {
   display: block;
-  margin-bottom: 1.42857;
+  margin-bottom: 1.4;
   padding: 0;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid #1b8dd9;
   color: #444;
-  font-size: 21px;
-  line-height: 2.85714; }
+  font-size: 24px;
+  line-height: 2.8; }
   legend small {
     color: #f8f8f8;
-    font-size: 1.07143; }
+    font-size: 1.05; }
 
 label,
 input,
@@ -7487,8 +7488,8 @@ button,
 select,
 textarea {
   font-weight: normal;
-  font-size: 14px;
-  line-height: 1.42857; }
+  font-size: 16px;
+  line-height: 1.4; }
 
 input,
 button,
@@ -7639,7 +7640,7 @@ textarea {
 
 .item-stacked-label input {
   overflow: hidden;
-  height: 46px; }
+  height: 50px; }
 
 .item-select.item-stacked-label select {
   position: relative;
@@ -7682,13 +7683,13 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  padding-top: 2px;
+  /*  padding-top: 2px;*/
   padding-left: 0;
-  height: 34px;
+  height: 32px;
   color: #111;
   vertical-align: middle;
-  font-size: 14px;
-  line-height: 16px; }
+  font-size: 16px;
+  line-height: 18px; }
 
 .platform-ios input[type="datetime-local"],
 .platform-ios input[type="date"],
@@ -7709,11 +7710,11 @@ input[type="color"] {
 textarea {
   padding-left: 0; }
   textarea::-moz-placeholder {
-    color: #aaaaaa; }
+    color: #cccccc; }
   textarea:-ms-input-placeholder {
-    color: #aaaaaa; }
+    color: #cccccc; }
   textarea::-webkit-input-placeholder {
-    color: #aaaaaa;
+    color: #cccccc;
     text-indent: -3px; }
 
 textarea {
@@ -7751,7 +7752,7 @@ input[type="checkbox"] {
   width: auto; }
 
 input[type="file"] {
-  line-height: 34px; }
+  line-height: 36px; }
 
 .previous-input-focus,
 .cloned-text-input + input,
@@ -7762,15 +7763,15 @@ input[type="file"] {
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-  color: #aaaaaa; }
+  color: #cccccc; }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-  color: #aaaaaa; }
+  color: #cccccc; }
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: #aaaaaa;
+  color: #cccccc;
   text-indent: 0; }
 
 input[disabled],
@@ -8437,7 +8438,7 @@ input:checked + .checkbox-icon:after {
     text-indent: .01px;
     text-overflow: '';
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     direction: rtl; }
   .item-select select::-ms-expand {
@@ -9731,10 +9732,6 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.logo {
-  margin: 0 auto;
-  display: block; }
-
 .business-list-wrapper > h2 {
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -9808,4 +9805,67 @@ a.button {
   min-height: 42px;
   line-height: 38px;
   border-radius: 3px;
-  margin: 10px 15px !important; }
+  margin: 10px 15px !important;
+  background-color: #1b8dd9 !important; }
+
+#map {
+  height: 300px;
+  width: 345px; }
+
+.scroll {
+  height: 100%; }
+
+.pane, .view {
+  background-color: #d2e4f8; }
+
+.card, .list-inset {
+  background-color: transparent; }
+
+.logo {
+  margin: 50px auto;
+  display: block; }
+
+.search-box {
+  padding: 18px;
+  position: relative; }
+  .search-box .item {
+    border-radius: 8px;
+    margin-right: 35px; }
+    .search-box .item input {
+      padding-right: 35px; }
+
+.button-search {
+  border-radius: 50%;
+  padding: 15px;
+  background-color: #1b8dd9 !important;
+  position: absolute;
+  right: 18px;
+  top: 8px;
+  z-index: 3; }
+  .button-search > img {
+    display: block; }
+
+.list-wrapper {
+  margin-top: 50px; }
+  .list-wrapper .item {
+    background-color: transparent;
+    font-weight: 600; }
+  .list-wrapper .icon {
+    font-size: 18px;
+    line-height: 27px;
+    color: #004c87; }
+
+.list > .item {
+  background-color: transparent !important; }
+  .list > .item:first-child {
+    border-top: 0; }
+
+.icon.icon18 {
+  font-size: 18px;
+  line-height: 27px;
+  color: #004c87; }
+
+.bar-calm .bar.bar-header {
+  background-color: #1b8dd9;
+  border-color: #3f7bbe;
+  color: #fff; }

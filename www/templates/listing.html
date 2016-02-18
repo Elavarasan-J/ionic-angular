@@ -1,6 +1,15 @@
 <ion-view view-title="Search : {{viewTitle}}" hide-back-button=false>
 	<ion-content>		 
 		<ion-list>
+			
+			<div ng-hide="listItems.error == 'Not found'">
+				<ng-map ng-repeat="list in listItems" ng-if="$index == 0" zoom="1" center="[{{list.latitude}},{{list.longitude}}]">
+				  <marker ng-repeat="list in listItems" 
+					position="{{list.latitude}},{{list.longitude}}" on-click="showData(map)">
+				  </marker>
+				</ng-map>
+			</div>
+			 
 			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
 				<div class="business-list-wrapper">
 					<h2><a ng-click="viewBusiness($index)" class="business-name">{{list.nom}}</a></h2>

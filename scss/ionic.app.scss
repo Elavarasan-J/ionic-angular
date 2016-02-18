@@ -19,13 +19,11 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "variables";
 
-.logo
-{
-	margin: 0 auto;
-	display: block;
-}
+@import "www/lib/ionic/scss/ionic";
+ 
+ 
 .business-list-wrapper
 {
 	>h2
@@ -142,5 +140,101 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		line-height: 38px;
 		border-radius: 3px;
 		margin: 10px 15px !important;
+		background-color: #1b8dd9 !important;
+	}
+}
+#map {
+    height: 300px;
+    width: 345px;
+}
+.scroll {
+    height: 100%;
+}
+
+// Ionic nav view
+.pane, .view
+{
+	background-color: #d2e4f8;
+}
+.card, .list-inset
+{
+	background-color: transparent;
+}
+
+// Search
+.logo
+{
+	margin: 50px auto;
+	display: block;
+}
+
+.search-box
+{
+	padding: 18px;
+	position: relative;
+	.item
+	{
+		border-radius: 8px;
+		margin-right: 35px;
+		input
+		{
+			padding-right: 35px;
+		}
+	}
+}
+.button-search
+{
+	border-radius: 50%;
+	padding: 15px;
+	background-color: #1b8dd9 !important;
+	position: absolute;
+	right: 18px;
+	top: 8px;
+	z-index: 3;
+	>img
+	{
+		display: block;
+	}
+}
+.list-wrapper
+{
+	margin-top: 50px;
+	.item
+	{
+		background-color: transparent;
+		font-weight: 600;
+	}
+	.icon
+	{
+		font-size: 18px;
+		line-height: 27px;
+		color: #004c87;
+	}
+}
+
+.list
+{
+	>.item
+	{
+		background-color: transparent !important;
+		&:first-child
+		{
+			border-top: 0;
+		}
+	}
+}
+.icon.icon18
+{
+	font-size: 18px;
+	line-height: 27px;
+	color: #004c87;
+}
+.bar-calm
+{
+	.bar.bar-header
+	{
+		background-color: #1b8dd9;
+		border-color: #3f7bbe;
+		color:#fff;
 	}
 }

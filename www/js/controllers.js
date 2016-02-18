@@ -12,7 +12,7 @@ app.controller('appController', function($scope, $ionicModal, $timeout) {
 
 // IndexController
 app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegate, BusinessService, $timeout, $location, $rootScope){	
-	
+	$rootScope.$state = $state;
 	$scope.listItems = [];
 	$scope.viewTitle = '';
 	$scope.moreDataAvailable = false;
@@ -62,36 +62,43 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 
 
 // businessListController
-app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, NgMap, $state){
-	
+app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, $state){
+	$rootScope.$state = $state;
 	BusinessService.getSearchBusiness($stateParams.searchItem, $stateParams.key).then(function(response){
 			$scope.viewTitle = $stateParams.searchItem;
 			$scope.listItems = response.data.business_list;
 	});
-	
-	NgMap.getMap().then(function(map) {
-		console.log(map);
-	});
+	 
 	
 	$scope.viewBusiness = function($index){
 		$state.go('app.view-business', { myParam : $scope.listItems[$index] });
+	}
+	
+	$scope.showData = function(map){
+		console.log(map);
 	}
 });
 
 
 // businessViewController
-app.controller('businessViewController', function($scope, $stateParams, BusinessService, $rootScope, $state){
+app.controller('businessViewController', function($scope, $stateParams, BusinessService, $rootScope, $state, $ionicLoading, NgMap){
+	$rootScope.$state = $state;
 	$scope.listItems = $stateParams.myParam;
 	$scope.isShowDirection = false;
 	$scope.getDirection = function(){
 		console.log('GetDirection !');
 		$scope.isShowDirection = true;
 	}
+	
+	NgMap.getMap().then(function(map) {
+		console.log(map.LatLng);
+	});
 });
 
 
 // NavigationController
-app.controller('navigationController', function($scope, $ionicHistory, $state, BusinessService, $stateParams){
+app.controller('navigationController', function($scope, $ionicHistory, $state, BusinessService, $stateParams,$rootScope){
+	$rootScope.$state = $state;
 	$scope.myGoBack = function(){
 		$ionicHistory.goBack();
 	}

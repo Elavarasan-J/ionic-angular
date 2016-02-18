@@ -80,7 +80,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.discovery', {
       url: '/discovery',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/discovery-menu.html',
 		  controller: 'navigationController'
         }
@@ -89,7 +89,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.festival', {
       url: '/festival',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/festival-menu.html',
 		  controller: 'navigationController'
         }
@@ -98,7 +98,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.nature', {
       url: '/nature',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/nature-menu.html',
 		  controller: 'navigationController'
         }
@@ -107,7 +107,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.stay', {
       url: '/stay',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/stay-menu.html',
 		  controller: 'navigationController'
         }
@@ -116,7 +116,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
    .state('app.accommodation', {
       url: '/accommodation',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/accommodation-menu.html',
 		  controller: 'navigationController'
         }
@@ -125,7 +125,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.eat-well', {
       url: '/eat-well',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/eat-well-menu.html',
 		  controller: 'navigationController'
         }
@@ -134,7 +134,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.how-to-come', {
       url: '/how-to-come',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/how-to-come.html',
 		  controller: 'navigationController'
         }
@@ -143,7 +143,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.deplacer', {
       url: '/deplacer',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/deplacer-menu.html',
 		  controller: 'navigationController'
         }
@@ -152,7 +152,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.informer', {
       url: '/informer',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/informer-menu.html',
 		  controller: 'navigationController'
         }
@@ -161,7 +161,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.activities', {
       url: '/activities',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/activity-menu.html',
 		  controller: 'navigationController'
         }
@@ -170,7 +170,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.water-activities', {
       url: '/water-activities',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/water-acitivity-menu.html',
 		  controller: 'navigationController'
         }
@@ -179,7 +179,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.sports-recreation', {
       url: '/sports-recreation',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/sports-recreation-menu.html',
 		  controller: 'navigationController'
         }
@@ -188,7 +188,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
    .state('app.trade', {
       url: '/trade',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/trade-menu.html',
 		  controller: 'navigationController'
         }
@@ -197,7 +197,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.culture', {
       url: '/culture',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/culture-menu.html',
 		  controller: 'navigationController'
         }
@@ -206,7 +206,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.night-world', {
       url: '/night-world',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/night-world-menu.html',
 		  controller: 'navigationController'
         }
@@ -215,7 +215,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   .state('app.association', {
       url: '/association',
       views: {
-        'sideMenuItem': {
+        'menuContent': {
           templateUrl: 'templates/association-menu.html',
 		  controller: 'navigationController'
         }
