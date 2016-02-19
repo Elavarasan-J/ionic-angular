@@ -210,6 +210,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		line-height: 27px;
 		color: #004c87;
 	}
+	.list
+	{
+		>.item
+		{
+			&:last-child
+			{
+				border-bottom: 0;	
+			}
+		}
+	}
 }
 
 .list
@@ -237,4 +247,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		border-color: #3f7bbe;
 		color:#fff;
 	}
+}
+.nav-bar-container.hide + .view-container .has-header
+{
+	top: 0;
 }

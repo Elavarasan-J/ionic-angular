@@ -9854,6 +9854,8 @@ a.button {
     font-size: 18px;
     line-height: 27px;
     color: #004c87; }
+  .list-wrapper .list > .item:last-child {
+    border-bottom: 0; }
 
 .list > .item {
   background-color: transparent !important; }
@@ -9869,3 +9871,6 @@ a.button {
   background-color: #1b8dd9;
   border-color: #3f7bbe;
   color: #fff; }
+
+.nav-bar-container.hide + .view-container .has-header {
+  top: 0; }

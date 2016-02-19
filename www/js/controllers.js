@@ -98,6 +98,7 @@ app.controller('businessViewController', function($scope, $stateParams, Business
 
 // NavigationController
 app.controller('navigationController', function($scope, $ionicHistory, $state, BusinessService, $stateParams,$rootScope){
+	
 	$rootScope.$state = $state;
 	$scope.myGoBack = function(){
 		$ionicHistory.goBack();
