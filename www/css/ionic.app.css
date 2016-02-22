@@ -9822,7 +9822,7 @@ a.button {
   background-color: transparent; }
 
 .logo {
-  margin: 20px auto;
+  margin: 10px auto;
   display: block; }
 
 .search-box {
@@ -9846,7 +9846,7 @@ a.button {
     display: block; }
 
 .list-wrapper {
-  margin-top: 20px; }
+  margin-top: 15px; }
   .list-wrapper .item {
     background-color: transparent;
     font-weight: 600; }
