@@ -1,0 +1,82 @@
+<ion-view view-title="Iledere apps">
+	<ion-content class="sort-business">
+	   <form class="searhForm" ng-submit="searcForm(searchItem)">
+		  <div class="list list-inset bg-white">
+			<label class="item item-input">
+			  <i class="icon ion-search placeholder-icon"></i>
+			  <input type="text" ng-model="searchItem" placeholder="Recherche entreprise">
+			</label>
+		  </div>
+		   
+		  <!--<div class="padding">
+			<button class="button button-block button-positive" type="submit">Submit</button>
+		  </div>-->
+		   
+		  <h6 class="title-sm">Filter the business by</h6> 
+		  <ul class="alphabetics-list">
+			  <li><a ng-click="sortBusiness($event);">a</a></li>
+			  <li><a ng-click="sortBusiness($event);">b</a></li>
+			  <li><a ng-click="sortBusiness($event);">c</a></li>
+			  <li><a ng-click="sortBusiness($event);">d</a></li>
+			  <li><a ng-click="sortBusiness($event);">e</a></li>
+			  <li><a ng-click="sortBusiness($event);">f</a></li>
+			  <li><a ng-click="sortBusiness($event);">g</a></li>
+			  <li><a ng-click="sortBusiness($event);">h</a></li>
+			  <li><a ng-click="sortBusiness($event);">i</a></li>
+			  <li><a ng-click="sortBusiness($event);">j</a></li>
+			  <li><a ng-click="sortBusiness($event);">k</a></li>
+			  <li><a ng-click="sortBusiness($event);">l</a></li>
+			  <li><a ng-click="sortBusiness($event);">m</a></li>
+			  <li><a ng-click="sortBusiness($event);">n</a></li>
+			  <li><a ng-click="sortBusiness($event);">o</a></li>
+			  <li><a ng-click="sortBusiness($event);">p</a></li>
+			  <li><a ng-click="sortBusiness($event);">q</a></li>
+			  <li><a ng-click="sortBusiness($event);">r</a></li>
+			  <li><a ng-click="sortBusiness($event);">s</a></li>
+			  <li><a ng-click="sortBusiness($event);">t</a></li>
+			  <li><a ng-click="sortBusiness($event);">u</a></li>
+			  <li><a ng-click="sortBusiness($event);">v</a></li>
+			  <li><a ng-click="sortBusiness($event);">w</a></li>
+			  <li><a ng-click="sortBusiness($event);">x</a></li>
+			  <li><a ng-click="sortBusiness($event);">y</a></li>
+			  <li><a ng-click="sortBusiness($event);">z</a></li>
+		  </ul>
+		   
+		   
+		   <ion-list>
+			<div ng-hide="listItems.error == 'Not found'">
+				<ng-map ng-repeat="list in listItems" ng-if="$index == 0" zoom="1" center="[{{list.latitude}},{{list.longitude}}]">
+				  <marker ng-repeat="list in listItems" 
+					position="{{list.latitude}},{{list.longitude}}" on-click="showData(map)">
+				  </marker>
+				</ng-map>
+			</div>
+			 
+			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
+				<div class="business-list-wrapper">
+					<h2><a ng-click="viewBusiness($index)" class="business-name">{{list.nom}}</a></h2>
+					<p class="text-blue">{{list.ville}}</p>
+					
+					<div class="list-inner-content">
+						<p>{{list.adresse}}</p>
+						<p>{{list.cp}} {{list.ville}}</p>
+						<p ng-if="list.tel!=''" ng-class="{ 'hide' : !list.tel }">Tel : {{list.tel}} </p>
+						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
+					</div>
+				</div>
+			</ion-item>
+			
+			<ion-item ng-if="listItems.error == 'Not found'">
+				<p>No business Found</p>
+			</ion-item>
+			
+		</ion-list>
+		   
+		  <!--<label class="item item-input">
+			<i class="icon ion-search placeholder-icon"></i>
+			<input type="text" ng-model="searchItem" placeholder="Search">
+		  </label>-->
+ 
+	  </form> <!--/Form -->
+	</ion-content>
+</ion-view>

@@ -240,6 +240,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		  }
 	  }
   })
+  .state('app.sort-business',{
+	  url: '/sort-business',
+	  views:{
+		  'menuContent':{
+			 templateUrl : 'templates/sort-business.html',
+			 controller : 'businessSortController'
+		  }
+	  }
+  })
  	
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');

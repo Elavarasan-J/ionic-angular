@@ -110,6 +110,23 @@ app.controller('navigationController', function($scope, $ionicHistory, $state, B
 });
 
 
+//businessSortController
+app.controller('businessSortController',function($scope, $state, BusinessService, $stateParams, $rootScope){
+	$scope.searcForm = function($searchItem){		
+		$state.go('app.listing', {searchItem : $searchItem, key:'q'});
+	}
+	$scope.sortBusiness = function($event){
+		var targetText = $event.target.innerHTML;
+		
+		BusinessService.getSearchBusiness(targetText, "sort").then(function(response){
+		 
+			$scope.viewTitle = $stateParams.sortLetter;
+			$scope.listItems = response.data.business_list;
+		});
+	}
+});
+
+
 // BusinessService
 app.factory('BusinessService',function($http){
 	
@@ -128,6 +145,9 @@ app.factory('BusinessService',function($http){
 				}
 				else if($key == 'categ'){
 					return $http.get(jsonData+'?categ='+$searchItem);
+				}
+				else if($key == 'sort'){
+					return $http.get(jsonData+'?sort='+$searchItem);
 				}
 			}
 		}
