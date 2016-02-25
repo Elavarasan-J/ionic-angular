@@ -164,7 +164,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Search
 .logo
 {
-	margin: 10px auto;
+	margin: 20px auto 0;
 	display: block;
 }
 
@@ -198,7 +198,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 .list-wrapper
 {
-	margin-top: 15px;
+	margin-top: 5px;
 	.item
 	{
 		background-color: transparent;
@@ -277,13 +277,24 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		}
 		>a
 		{
-			 border: 1px solid;
+			 border: 1px solid #387ef5;
 			cursor: pointer;
 			font-size: 11px;
+			line-height: 17px;
 			font-weight: 700;
-			padding: 0 3px;
+			width: 25px;
+			height: 25px;
+			text-align: center;
+			margin: 2px;
+			border-radius: 50%;
 			display: block;
 			text-transform: uppercase;
+			padding: 3px 0;
+			&:hover
+			{
+				background-color: #387ef5;
+				color: #fff;
+			}
 		}
 	}
 }
@@ -298,4 +309,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	{
 		background-color: #fff !important;
 	}
+}
+.item
+{
+	color: #000;
 }

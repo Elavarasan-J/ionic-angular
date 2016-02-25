@@ -9822,7 +9822,7 @@ a.button {
   background-color: transparent; }
 
 .logo {
-  margin: 10px auto;
+  margin: 20px auto 0;
   display: block; }
 
 .search-box {
@@ -9846,7 +9846,7 @@ a.button {
     display: block; }
 
 .list-wrapper {
-  margin-top: 15px; }
+  margin-top: 5px; }
   .list-wrapper .item {
     background-color: transparent;
     font-weight: 600; }
@@ -9893,13 +9893,22 @@ a.button {
     .alphabetics-list > li + li {
       margin-left: -1px; }
     .alphabetics-list > li > a {
-      border: 1px solid;
+      border: 1px solid #387ef5;
       cursor: pointer;
       font-size: 11px;
+      line-height: 17px;
       font-weight: 700;
-      padding: 0 3px;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      margin: 2px;
+      border-radius: 50%;
       display: block;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      padding: 3px 0; }
+      .alphabetics-list > li > a:hover {
+        background-color: #387ef5;
+        color: #fff; }
 
 .title-sm {
   margin: 0 2px 7px;
@@ -9907,3 +9916,6 @@ a.button {
 
 .bg-white > .item {
   background-color: #fff !important; }
+
+.item {
+  color: #000; }
