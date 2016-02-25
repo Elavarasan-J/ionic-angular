@@ -249,6 +249,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		  }
 	  }
   })
+  .state('app.empty',{
+	  url: '/empty',
+	  views:{
+		  'menuContent':{
+			 templateUrl : 'templates/empty.html',
+			 controller : 'navigationController'
+		  }
+	  }
+  })
  	
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');

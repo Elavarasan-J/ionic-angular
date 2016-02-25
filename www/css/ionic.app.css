@@ -9898,14 +9898,14 @@ a.button {
       font-size: 11px;
       line-height: 17px;
       font-weight: 700;
-      width: 25px;
-      height: 25px;
+      width: 32px;
+      height: 32px;
       text-align: center;
-      margin: 2px;
+      margin: 2px 5px;
       border-radius: 50%;
       display: block;
       text-transform: uppercase;
-      padding: 3px 0; }
+      padding: 6px 0; }
       .alphabetics-list > li > a:hover {
         background-color: #387ef5;
         color: #fff; }
