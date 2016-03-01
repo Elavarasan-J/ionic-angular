@@ -63,8 +63,10 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 
 // businessListController
 app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, $state){
+	$rootScope.loaderIcon = true;
 	$rootScope.$state = $state;
 	BusinessService.getSearchBusiness($stateParams.searchItem, $stateParams.key).then(function(response){
+			$rootScope.loaderIcon = false;
 			$scope.viewTitle = $stateParams.searchItem;
 			$scope.listItems = response.data.business_list;
 	});
@@ -105,6 +107,7 @@ app.controller('navigationController', function($scope, $ionicHistory, $state, B
 	}
 	$scope.categorySearch = function($ev){
 		var catValue = $ev.target.innerHTML;
+		console.log(catValue);
 		$state.go('app.listing', {searchItem : catValue.trim(), key:'categ'});
 	}
 });
@@ -112,14 +115,15 @@ app.controller('navigationController', function($scope, $ionicHistory, $state, B
 
 //businessSortController
 app.controller('businessSortController',function($scope, $state, BusinessService, $stateParams, $rootScope){
+	
 	$scope.searcForm = function($searchItem){		
 		$state.go('app.listing', {searchItem : $searchItem, key:'q'});
 	}
 	$scope.sortBusiness = function($event){
 		var targetText = $event.target.innerHTML;
-		
+		$rootScope.loaderIcon = true;
 		BusinessService.getSearchBusiness(targetText, "sort").then(function(response){
-		 
+		    $rootScope.loaderIcon = false;
 			$scope.viewTitle = $stateParams.sortLetter;
 			$scope.listItems = response.data.business_list;
 		});
@@ -141,7 +145,9 @@ app.factory('BusinessService',function($http){
 			},
 			getSearchBusiness : function($searchItem, $key){
 				if($key == 'q'){
-					return $http.get(jsonData+'?q='+$searchItem);		
+					return $http.get(jsonData+'?q='+$searchItem).success(function(data){
+						
+					});
 				}
 				else if($key == 'categ'){
 					return $http.get(jsonData+'?categ='+$searchItem);

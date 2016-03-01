@@ -1,4 +1,4 @@
-<ion-view view-title="Iledere apps">
+<ion-view view-title="Annuaire">
 	<ion-content class="sort-business">
 	   <form class="searhForm" ng-submit="searcForm(searchItem)">
 		  <div class="list list-inset bg-white">
@@ -44,6 +44,11 @@
 		   
 		   
 		   <ion-list>
+			   
+		   <div class="loader" ng-show="loaderIcon">
+			 <ion-spinner icon="android"></ion-spinner>
+		   </div>
+			   
 			<div ng-hide="listItems.error == 'Not found'">
 				<ng-map ng-repeat="list in listItems" ng-if="$index == 0" zoom="1" center="[{{list.latitude}},{{list.longitude}}]">
 				  <marker ng-repeat="list in listItems" 

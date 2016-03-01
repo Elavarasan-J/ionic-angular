@@ -1,6 +1,10 @@
 <ion-view view-title="Search : {{viewTitle}}" hide-back-button=false>
 	<ion-content>		 
 		<ion-list>
+			<div class="loader" ng-show="loaderIcon">
+				 <ion-spinner icon="android"></ion-spinner>
+			</div>
+			
 			<div ng-hide="listItems.error == 'Not found'">
 				<ng-map ng-repeat="list in listItems" ng-if="$index == 0" zoom="1" center="[{{list.latitude}},{{list.longitude}}]">
 				  <marker ng-repeat="list in listItems" 

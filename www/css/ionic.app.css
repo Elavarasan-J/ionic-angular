@@ -9919,3 +9919,7 @@ a.button {
 
 .item {
   color: #000; }
+
+.loader {
+  margin: 20px auto;
+  text-align: center; }
