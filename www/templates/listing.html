@@ -24,7 +24,11 @@
 						<p ng-if="list.tel!=''" ng-class="{ 'hide' : !list.tel }">Tel : {{list.tel}} </p>
 						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
 					</div>
+					
+					<button ng-click="viewBusiness($index)" class="button button-outline button-positive button-medium"> Get Direction</button>
+					
 				</div>
+				
 			</ion-item>
 			
 			<ion-item ng-if="listItems.error == 'Not found'">
@@ -32,8 +36,6 @@
 			</ion-item>
 			
 		</ion-list>
-		
-		<ion-infinite-scroll on-infinite="loadMore()" ng-if="!moreDataAvailable" immediate-check=false distance="3%"></ion-infinite-scroll>
 		
 	</ion-content>
 </ion-view>

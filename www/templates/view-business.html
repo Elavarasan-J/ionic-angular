@@ -6,13 +6,13 @@
 					<h2 ng-click="">{{listItems.nom}}</h2>
 					<p class="text-blue">{{listItems.ville}}</p>
 					
-					<ng-map class="mb20" zoom="10" center="current-location">
+					<ng-map class="mb20" zoom="10" center="46.169796, -1.338945">
 						<directions
 						  draggable="true"
 						  panel="directions-panel"
 						  travel-mode="DRIVING"
-						  origin="current-location"
-						  destination="{{listItems.latitude}}, {{listItems.longitude}}">
+						  origin="46.169796, -1.338945"
+						  destination="{{listItems.adresse}},{{listItems.cp}} {{listItems.ville}},{{listItems.pays}}">
 						</directions>
 					</ng-map>
 					
@@ -26,10 +26,6 @@
 					</div>
 				</div>
 			</ion-item>
-			 
 		</ion-list>
-		
-		<ion-infinite-scroll on-infinite="loadMore()" ng-if="!moreDataAvailable" immediate-check=false distance="3%"></ion-infinite-scroll>
-		
 	</ion-content>
 </ion-view>

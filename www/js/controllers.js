@@ -76,6 +76,10 @@ app.controller('businessListController', function($scope, $stateParams, Business
 		$state.go('app.view-business', { myParam : $scope.listItems[$index] });
 	}
 	
+	$scope.getDirection = function($index){
+			$state.go('app.view-business', { myParam : $scope.listItems[$index] });
+	}
+	
 	$scope.showData = function(map){
 		console.log(map);
 	}
@@ -86,11 +90,6 @@ app.controller('businessListController', function($scope, $stateParams, Business
 app.controller('businessViewController', function($scope, $stateParams, BusinessService, $rootScope, $state, $ionicLoading, NgMap){
 	$rootScope.$state = $state;
 	$scope.listItems = $stateParams.myParam;
-	$scope.isShowDirection = false;
-	$scope.getDirection = function(){
-		console.log('GetDirection !');
-		$scope.isShowDirection = true;
-	}
 	
 	NgMap.getMap().then(function(map) {
 		console.log(map.LatLng);
