@@ -2,7 +2,7 @@
 	<ion-content>
 	  <ion-list>
 		  
-		<ion-item menu-close ng-click="categorySearch($event)">
+		<ion-item menu-close ng-click="categorySearch($event,1)">
 		 Tous les lieux culturels
 		</ion-item>
 		  
@@ -11,13 +11,21 @@
 		</ion-item>
 		  
 		<ion-item menu-close ng-click="categorySearch($event)">
-		  Arts / Artistes
+		  Bons Plans
+		</ion-item>
+		  
+		  <ion-item menu-close ng-click="categorySearch($event)">
+		 Cinéma
+		</ion-item>
+		 
+		  <ion-item menu-close ng-click="categorySearch($event)">
+		  Musés
 		</ion-item>
 		  
 		<ion-item menu-close ng-click="categorySearch($event)">
-		  Musées / Cinéma
+		   Arts
 		</ion-item>
-		
+		  
 		<ion-item menu-close ng-click="categorySearch($event)">
 		  Concerts / Spectacles
 		</ion-item>
@@ -26,10 +34,7 @@
 		  Musique
 		</ion-item>
 		  
-		<ion-item menu-close ng-click="categorySearch($event)">
-		  Librairies
-		</ion-item>
-		 
+		
 	  </ion-list>
 	</ion-content>
 </ion-view>

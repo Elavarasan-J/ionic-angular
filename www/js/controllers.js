@@ -65,7 +65,9 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, $state){
 	$rootScope.loaderIcon = true;
 	$rootScope.$state = $state;
+	
 	BusinessService.getSearchBusiness($stateParams.searchItem, $stateParams.key).then(function(response){
+			 
 			$rootScope.loaderIcon = false;
 			$scope.viewTitle = $stateParams.searchItem;
 			$scope.listItems = response.data.business_list;
@@ -81,7 +83,7 @@ app.controller('businessListController', function($scope, $stateParams, Business
 	}
 	
 	$scope.showData = function(map){
-		console.log(map);
+		/*console.log(map);*/
 	}
 });
 
@@ -92,7 +94,7 @@ app.controller('businessViewController', function($scope, $stateParams, Business
 	$scope.listItems = $stateParams.myParam;
 	
 	NgMap.getMap().then(function(map) {
-		console.log(map.LatLng);
+//		console.log(map.LatLng);
 	});
 });
 
@@ -104,18 +106,32 @@ app.controller('navigationController', function($scope, $ionicHistory, $state, B
 	$scope.myGoBack = function(){
 		$ionicHistory.goBack();
 	}
-	$scope.categorySearch = function($ev){
+	$scope.categorySearch = function($ev,$status){
 		var catValue = $ev.target.innerHTML;
-		console.log(catValue);
-		$state.go('app.listing', {searchItem : catValue.trim(), key:'categ'});
+		if($status){
+			$state.go('app.listing', {searchItem : catValue.trim(), key:'categ_name'});
+		}
+		else{
+			$state.go('app.listing', {searchItem : catValue.trim(), key:'categ'});
+		}
+		/*console.log($ev.target.hasAttribute('data-top-menu'));*/
+		
 	}
+	
+	/*$scope.categoryMenuSearch = function($ev){
+		console.log($ev);
+		var menuValue = ($ev.target.innerHTML).trim();
+		$state.go('app.listing', {searchItem : menuValue, key:'categ_name'});
+		var catValue = $ev.target.innerHTML;
+		$state.go('app.listing', {searchItem : catValue.trim(), key:'categ_name'});
+	}*/
 });
 
 
 //businessSortController
 app.controller('businessSortController',function($scope, $state, BusinessService, $stateParams, $rootScope){
 	
-	$scope.searcForm = function($searchItem){		
+	$scope.searchForm = function($searchItem){		
 		$state.go('app.listing', {searchItem : $searchItem, key:'q'});
 	}
 	$scope.sortBusiness = function($event){
@@ -134,7 +150,7 @@ app.controller('businessSortController',function($scope, $state, BusinessService
 app.factory('BusinessService',function($http){
 	
 		var jsonData = "http://ec2-52-23-151-147.compute-1.amazonaws.com/api.php";
-		var items = [];
+		var items = [], newStr;
 		return {
 			getBusiness : function(){				
 				return $http.get(jsonData).then(function(response){	
@@ -143,16 +159,21 @@ app.factory('BusinessService',function($http){
 				});
 			},
 			getSearchBusiness : function($searchItem, $key){
+				newStr = $searchItem.replace('/',' ').replace(/\s+/g,' ');
+				console.log(newStr)
 				if($key == 'q'){
-					return $http.get(jsonData+'?q='+$searchItem).success(function(data){
+					return $http.get(jsonData+'?q='+newStr).success(function(data){
 						
 					});
 				}
 				else if($key == 'categ'){
-					return $http.get(jsonData+'?categ='+$searchItem);
+					return $http.get(jsonData+'?categ='+newStr);
 				}
 				else if($key == 'sort'){
-					return $http.get(jsonData+'?sort='+$searchItem);
+					return $http.get(jsonData+'?sort='+newStr);
+				}
+				else if($key == 'categ_name'){
+					return $http.get(jsonData+'?categ_name='+newStr);
 				}
 			}
 		}
