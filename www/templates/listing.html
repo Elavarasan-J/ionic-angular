@@ -6,16 +6,11 @@
 			</div>
 			
 			<div ng-hide="listItems.error == 'Not found'"> 
-				<div map-lazy-load="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVhvoL-PnTpY2u10RlH2RUyvltMliZ3w">
-					<ng-map zoom="10" center="[46.190101, -1.395228]">
-						<marker draggable="true" ng-repeat="list in listItems" position="{{list.adresse}} ,{{list.cp}} {{list.ville}} {{list.pays}}" no-watcher="true"></marker>
-					</ng-map>
-				</div>
+				<ng-map zoom="10" center="[46.190101, -1.395228]">
+					<marker draggable="true" ng-repeat="list in listItems" position="{{list.latitude}},{{list.longitude}}" no-watcher="true"></marker>
+				</ng-map>
 			</div>
-			
-			
-		
-			
+			 
 			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
 				<div class="business-list-wrapper">
 					<h2><a ng-click="viewBusiness($index)" class="business-name">{{list.nom}}</a></h2>
