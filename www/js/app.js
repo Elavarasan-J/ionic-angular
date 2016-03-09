@@ -21,37 +21,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
-/*<script>
-function initialize() {
-var nom = getUrlVars()["name"];
-nom=unescape(nom);
-var latitude = getUrlVars()[40.7143528];
-var longitude = getUrlVars()[-74.0059731];
-if(latitude && longitude){
-latitude=parseFloat(latitude);
-longitude=parseFloat(longitude);
-}
-else{
-latitude=0;
-longitude=0;
-}
-var myLatLng = {lat:latitude, lng: longitude};
-
-var map = new google.maps.Map(document.getElementById('map'), {
-zoom: 4,
-center: myLatLng
-});
-
-var marker = new google.maps.Marker({
-position: myLatLng,
-map: map,
-title: nom
-});
-
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>*/
-
 .config(function($ionicConfigProvider){
 	$ionicConfigProvider.views.maxCache(0);
 })

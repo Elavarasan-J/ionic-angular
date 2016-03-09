@@ -62,28 +62,31 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 
 
 // businessListController
-app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, $state){
+app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, $state ,NgMap){
+	$scope.listItems = [];
 	$rootScope.loaderIcon = true;
 	$rootScope.$state = $state;
+	$scope.viewTitle = $stateParams.searchItem;
+	BusinessService.getSearchBusiness($stateParams.searchItem, $stateParams.key, function(response,status){
+			if(status){
+				$rootScope.loaderIcon = false;
+				return $scope.listItems = response.business_list;
+			}else{
+				$rootScope.loaderIcon = false;
+				return $scope.listItems = [];
+			}
+	});
 	
-	BusinessService.getSearchBusiness($stateParams.searchItem, $stateParams.key).then(function(response){
-			 
-			$rootScope.loaderIcon = false;
-			$scope.viewTitle = $stateParams.searchItem;
-			$scope.listItems = response.data.business_list;
+	NgMap.getMap().then(function(map) {
+	/*	console.info('markers', map.markers);*/
 	});
 	 
-	
 	$scope.viewBusiness = function($index){
-		$state.go('app.view-business', { myParam : $scope.listItems[$index] });
+		$state.go('app.view-business', { myParam : $scope.listItems[$index]});
 	}
 	
 	$scope.getDirection = function($index){
-			$state.go('app.view-business', { myParam : $scope.listItems[$index] });
-	}
-	
-	$scope.showData = function(map){
-		/*console.log(map);*/
+			$state.go('app.view-business', { myParam : $scope.listItems[$index]});
 	}
 });
 
@@ -94,7 +97,7 @@ app.controller('businessViewController', function($scope, $stateParams, Business
 	$scope.listItems = $stateParams.myParam;
 	
 	NgMap.getMap().then(function(map) {
-//		console.log(map.LatLng);
+		console.log(map)
 	});
 });
 
@@ -114,34 +117,34 @@ app.controller('navigationController', function($scope, $ionicHistory, $state, B
 		else{
 			$state.go('app.listing', {searchItem : catValue.trim(), key:'categ'});
 		}
-		/*console.log($ev.target.hasAttribute('data-top-menu'));*/
-		
 	}
-	
-	/*$scope.categoryMenuSearch = function($ev){
-		console.log($ev);
-		var menuValue = ($ev.target.innerHTML).trim();
-		$state.go('app.listing', {searchItem : menuValue, key:'categ_name'});
-		var catValue = $ev.target.innerHTML;
-		$state.go('app.listing', {searchItem : catValue.trim(), key:'categ_name'});
-	}*/
+	 
 });
 
 
 //businessSortController
 app.controller('businessSortController',function($scope, $state, BusinessService, $stateParams, $rootScope){
 	
-	$scope.searchForm = function($searchItem){		
+	$scope.viewTitle = $stateParams.sortLetter;
+	
+	$scope.searcForm = function($searchItem){		
 		$state.go('app.listing', {searchItem : $searchItem, key:'q'});
 	}
 	$scope.sortBusiness = function($event){
 		var targetText = $event.target.innerHTML;
 		$rootScope.loaderIcon = true;
-		BusinessService.getSearchBusiness(targetText, "sort").then(function(response){
-		    $rootScope.loaderIcon = false;
-			$scope.viewTitle = $stateParams.sortLetter;
-			$scope.listItems = response.data.business_list;
-		});
+		
+		BusinessService.getSearchBusiness(targetText, "sort", function(response,status){
+			if(status){
+				$rootScope.loaderIcon = false;
+				return $scope.listItems = response.business_list;
+			}else{
+				$rootScope.loaderIcon = false;
+				return $scope.listItems = [];
+			}
+			
+	});
+	 
 	}
 });
 
@@ -158,23 +161,46 @@ app.factory('BusinessService',function($http){
 					return items;					
 				});
 			},
-			getSearchBusiness : function($searchItem, $key){
+			getSearchBusiness : function($searchItem, $key, callback){
 				newStr = $searchItem.replace('/',' ').replace(/\s+/g,' ');
-				console.log(newStr)
+				
 				if($key == 'q'){
-					return $http.get(jsonData+'?q='+newStr).success(function(data){
-						
-					});
+					return $http.get(jsonData+'?q='+newStr)
+					.success(function(data){
+						return callback(data, true);
+					})
+					.error(function(data){
+						return callback(data, false);
+					})
 				}
 				else if($key == 'categ'){
-					return $http.get(jsonData+'?categ='+newStr);
+					return $http.get(jsonData+'?categ='+newStr)
+					.success(function(data){
+						return callback(data, true);
+					})
+					.error(function(data){
+						 return callback(data, false);
+					})
 				}
 				else if($key == 'sort'){
-					return $http.get(jsonData+'?sort='+newStr);
+					return $http.get(jsonData+'?sort='+newStr)
+					.success(function(data){
+						return callback(data, true);
+					})
+					.error(function(data){
+						return callback(data, false);
+					})
 				}
 				else if($key == 'categ_name'){
-					return $http.get(jsonData+'?categ_name='+newStr);
+					return $http.get(jsonData+'?categ_name='+newStr)
+					.success(function(data){
+						return callback(data, true);
+					})
+					.error(function(data){
+						return callback(data, false);
+					})
 				}
 			}
 		}
 });
+

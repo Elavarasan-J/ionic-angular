@@ -1,18 +1,21 @@
-<ion-view view-title="Search : {{viewTitle}}" hide-back-button=false>
+<ion-view view-title="{{viewTitle}}" hide-back-button=false>
 	<ion-content>		 
 		<ion-list>
 			<div class="loader" ng-show="loaderIcon">
 				 <ion-spinner icon="android"></ion-spinner>
 			</div>
 			
-			<div ng-hide="listItems.error == 'Not found'">
-				<ng-map ng-repeat="list in listItems" ng-if="$index == 0" zoom="1" center="[{{list.latitude}},{{list.longitude}}]">
-				  <marker ng-repeat="list in listItems" 
-					position="{{list.latitude}},{{list.longitude}}" on-click="showData(map)">
-				  </marker>
-				</ng-map>
+			<div ng-hide="listItems.error == 'Not found'"> 
+				<div map-lazy-load="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVhvoL-PnTpY2u10RlH2RUyvltMliZ3w">
+					<ng-map zoom="10" center="[46.190101, -1.395228]">
+						<marker draggable="true" ng-repeat="list in listItems" position="{{list.adresse}} ,{{list.cp}} {{list.ville}} {{list.pays}}" no-watcher="true"></marker>
+					</ng-map>
+				</div>
 			</div>
-			 
+			
+			
+		
+			
 			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
 				<div class="business-list-wrapper">
 					<h2><a ng-click="viewBusiness($index)" class="business-name">{{list.nom}}</a></h2>
@@ -25,14 +28,14 @@
 						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
 					</div>
 					
-					<button ng-click="viewBusiness($index)" class="button button-outline button-positive button-medium"> Get Direction</button>
+					<button ng-click="viewBusiness($index)" class="button button-outline button-positive button-medium">Obtenir l'itinéraire</button>
 					
 				</div>
 				
 			</ion-item>
 			
-			<ion-item ng-if="listItems.error == 'Not found'">
-				<p>No business Found</p>
+			<ion-item ng-if="listItems.error == 'Not found' || listItems.length <= 0 ">
+				<p>Aucun résultat</p>
 			</ion-item>
 			
 		</ion-list>
