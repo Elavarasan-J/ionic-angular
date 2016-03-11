@@ -152,7 +152,7 @@ app.controller('businessSortController',function($scope, $state, BusinessService
 // BusinessService
 app.factory('BusinessService',function($http){
 	
-		var jsonData = "http://ec2-52-23-151-147.compute-1.amazonaws.com/api.php";
+		var jsonData = "http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php";
 		var items = [], newStr;
 		return {
 			getBusiness : function(){				

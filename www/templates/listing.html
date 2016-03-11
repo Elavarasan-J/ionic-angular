@@ -5,7 +5,7 @@
 				 <ion-spinner icon="android"></ion-spinner>
 			</div>
 			
-			<div ng-hide="listItems.error == 'Not found'"> 
+			<div ng-hide="listItems.error == 'Not found' || listItems.length <= 0 "> 
 				<ng-map zoom="10" center="[46.190101, -1.395228]">
 					<marker draggable="true" ng-repeat="list in listItems" position="{{list.latitude}},{{list.longitude}}" no-watcher="true"></marker>
 				</ng-map>
@@ -29,7 +29,7 @@
 				
 			</ion-item>
 			
-			<ion-item ng-if="listItems.error == 'Not found' || listItems.length <= 0 ">
+			<ion-item ng-if="listItems.error == 'Not found' || listItems.length <= 0">
 				<p>Aucun résultat</p>
 			</ion-item>
 			
