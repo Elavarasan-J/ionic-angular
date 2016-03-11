@@ -218,11 +218,30 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		  }
 	  }
   })
-  .state('app.empty',{
-	  url: '/empty',
+ .state('app.sort-view-business',{
+	  url: '/sort-view-business',
+	  params: {myParam: null},
 	  views:{
 		  'menuContent':{
-			 templateUrl : 'templates/empty.html',
+			 templateUrl : 'templates/sort-view-business.html',
+			 controller : 'businessSortViewController'
+		  }
+	  }
+  })
+  .state('app.news',{
+	  url: '/news',
+	  views:{
+		  'menuContent':{
+			 templateUrl : 'templates/news-menu.html',
+			 controller : 'navigationController'
+		  }
+	  }
+  })
+  .state('app.re-island',{
+	  url: '/re-island',
+	  views:{
+		  'menuContent':{
+			 templateUrl : 'templates/re-island-menu.html',
 			 controller : 'navigationController'
 		  }
 	  }

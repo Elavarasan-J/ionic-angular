@@ -130,9 +130,15 @@ app.controller('businessSortController',function($scope, $state, BusinessService
 	$scope.searcForm = function($searchItem){		
 		$state.go('app.listing', {searchItem : $searchItem, key:'q'});
 	}
+	
+	$scope.showMap =false;
+ 
 	$scope.sortBusiness = function($event){
+	 
 		var targetText = $event.target.innerHTML;
+		
 		$rootScope.loaderIcon = true;
+		$scope.showMap = true;
 		
 		BusinessService.getSearchBusiness(targetText, "sort", function(response,status){
 			if(status){
@@ -142,10 +148,22 @@ app.controller('businessSortController',function($scope, $state, BusinessService
 				$rootScope.loaderIcon = false;
 				return $scope.listItems = [];
 			}
-			
-	});
-	 
+		});
 	}
+	
+	$scope.viewSortBusiness = function($index){
+		$state.go('app.sort-view-business', { myParam : $scope.listItems[$index]});	
+	}
+});
+ 
+app.controller('businessSortViewController', function($scope, $stateParams, BusinessService, $rootScope, $state, $ionicLoading, NgMap){
+	$rootScope.$state = $state;
+	
+	$scope.listItems = $stateParams.myParam;
+	
+	NgMap.getMap().then(function(map) {
+		console.log(map)
+	});
 });
 
 

@@ -1,0 +1,31 @@
+<ion-view view-title="{{listItems.nom}}" hide-back-button=false>
+	<ion-content>		 
+		<ion-list>
+			<ion-item class="no-border">
+				<div class="business-list-wrapper">
+					<h2 ng-click="">{{listItems.nom}}</h2>
+					<p class="text-blue">{{listItems.ville}}</p>
+					
+					<ng-map class="mb20" zoom="10" center="46.169796, -1.338945">
+						<directions
+						  draggable="true"
+						  panel="directions-panel"
+						  travel-mode="DRIVING"
+						  origin="46.169796, -1.338945"
+						  destination="{{listItems.adresse}},{{listItems.cp}} {{listItems.ville}},{{listItems.pays}}">
+						</directions>
+					</ng-map>
+					
+					<div class="list-inner-content m7">
+						<p>{{listItems.adresse}}</p>
+						<p>{{listItems.cp}} {{listItems.ville}}</p>
+						<p ng-if="listItems.tel!=''" ng-class="{ 'hide' : !listItems.tel }">Tel : {{listItems.tel}} </p>
+						<p ng-if="listItems.fax!=''" ng-class="{ 'hide' : !listItems.fax }">Fax : {{listItems.fax}} </p>
+						<p ng-if="listItems.pays !=''" ng-class="{ 'hide' : !listItems.pays }">Pays : {{listItems.pays}} </p>
+						<p ng-if="listItems.categ !=''" ng-class="{ 'hide' : !listItems.categ }">Categ : {{listItems.categ}} </p>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
