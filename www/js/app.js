@@ -39,11 +39,81 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'menuContent': {
           templateUrl: 'templates/search.html',
           controller: 'indexController'
-        },
-		'sideMenuItem':{
-			templateUrl: 'templates/side-menu.html',
-			controller: 'navigationController'
-		}
+        }
+      }
+    })
+  
+  .state('app.re-island',{
+	  url: '/re-island',
+	  views:{
+		  'menuContent':{
+			 templateUrl : 'templates/re-island-menu.html',
+			 controller : 'navigationController'
+		  }
+	  }
+  })
+  .state('app.future-reason', {
+      url: '/future-reason',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/future-reason-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.cities', {
+      url: '/cities',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/cities-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.convinent', {
+      url: '/convinent',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/convinent-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.banking-insurance', {
+      url: '/banking-insurance',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/banking-insurance-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+   .state('app.auto-boat', {
+      url: '/auto-boat',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/auto-boat-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+   .state('app.barber-wellness', {
+      url: '/barber-wellness',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/barber-wellness-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  
+   .state('app.artisans', {
+      url: '/artisans',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/artisans-menu.html',
+		  controller: 'navigationController'
+        }
       }
     })
   .state('app.discovery', {
@@ -51,6 +121,43 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/discovery-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.services', {
+      url: '/services',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/service-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+   .state('app.mode-shopping', {
+      url: '/mode-shopping',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/mode-shopping-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  .state('app.grocery', {
+      url: '/grocery',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/grocery-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+  
+   .state('app.made-in-re', {
+      url: '/made-in-re',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/made-inre-menu.html',
 		  controller: 'navigationController'
         }
       }
@@ -237,15 +344,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		  }
 	  }
   })
-  .state('app.re-island',{
-	  url: '/re-island',
-	  views:{
-		  'menuContent':{
-			 templateUrl : 'templates/re-island-menu.html',
-			 controller : 'navigationController'
-		  }
-	  }
-  })
+  
  	
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');

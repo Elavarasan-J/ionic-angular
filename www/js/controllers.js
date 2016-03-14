@@ -180,7 +180,7 @@ app.factory('BusinessService',function($http){
 				});
 			},
 			getSearchBusiness : function($searchItem, $key, callback){
-				newStr = $searchItem.replace('/',' ').replace(/\s+/g,' ');
+				newStr = $searchItem.replace('/',' ').replace('-',' ').replace(/\s+/g,' ');
 				
 				if($key == 'q'){
 					return $http.get(jsonData+'?q='+newStr)
