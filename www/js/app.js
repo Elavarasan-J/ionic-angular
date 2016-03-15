@@ -22,7 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 })
 
 .config(function($ionicConfigProvider){
-	$ionicConfigProvider.views.maxCache(0);
+	$ionicConfigProvider.views.maxCache(33);
 })
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -39,43 +39,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'menuContent': {
           templateUrl: 'templates/search.html',
           controller: 'indexController'
-        }
-      }
-    })
-  
-  .state('app.re-island',{
-	  url: '/re-island',
-	  views:{
-		  'menuContent':{
-			 templateUrl : 'templates/re-island-menu.html',
-			 controller : 'navigationController'
-		  }
-	  }
-  })
-  .state('app.future-reason', {
-      url: '/future-reason',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/future-reason-menu.html',
-		  controller: 'navigationController'
-        }
-      }
-    })
-  .state('app.cities', {
-      url: '/cities',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/cities-menu.html',
-		  controller: 'navigationController'
-        }
-      }
-    })
-  .state('app.convinent', {
-      url: '/convinent',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/convinent-menu.html',
-		  controller: 'navigationController'
         }
       }
     })
@@ -106,7 +69,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-  
    .state('app.artisans', {
       url: '/artisans',
       views: {
@@ -261,20 +223,20 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-   .state('app.trade', {
-      url: '/trade',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/trade-menu.html',
-		  controller: 'navigationController'
-        }
-      }
-    })
   .state('app.culture', {
       url: '/culture',
       views: {
         'menuContent': {
           templateUrl: 'templates/culture-menu.html',
+		  controller: 'navigationController'
+        }
+      }
+    })
+   .state('app.trade', {
+      url: '/trade',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/trade-menu.html',
 		  controller: 'navigationController'
         }
       }
@@ -344,7 +306,51 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		  }
 	  }
   })
-  
+  .state('app.re-island',{
+	  url: '/re-island',
+	  views:{
+		  'menuContent':{
+			 templateUrl : 'templates/re-island-menu.html',
+			 controller : 'articleController'
+		  }
+	  }
+  })
+  .state('app.future-reason', {
+      url: '/future-reason',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/future-reason-menu.html',
+		  controller: 'articleController'
+        }
+      }
+    })
+  .state('app.cities', {
+      url: '/cities',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/cities-menu.html',
+		  controller: 'articleController'
+        }
+      }
+    })
+  .state('app.convinent', {
+      url: '/convinent',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/convinent-menu.html',
+		  controller: 'articleController'
+        }
+      }
+    })
+  .state('app.favorites', {
+      url: '/favorites',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/our-favorites.html',
+		  controller: 'articleController'
+        }
+      }
+    })
  	
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');

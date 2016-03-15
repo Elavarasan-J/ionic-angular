@@ -110,15 +110,24 @@ app.controller('navigationController', function($scope, $ionicHistory, $state, B
 		$ionicHistory.goBack();
 	}
 	$scope.categorySearch = function($ev,$status){
-		var catValue = $ev.target.innerHTML;
+		
+		var catValue =($ev.target.innerHTML).trim();
+		 
 		if($status){
-			$state.go('app.listing', {searchItem : catValue.trim(), key:'categ_name'});
+			$state.go('app.listing', {searchItem : catValue, key:'categ_name'});
 		}
 		else{
-			$state.go('app.listing', {searchItem : catValue.trim(), key:'categ'});
+			$state.go('app.listing', {searchItem : catValue, key:'categ'});
 		}
 	}
 	 
+});
+
+// articleController
+app.controller('articleController', function($scope, $ionicHistory, $state, BusinessService, $stateParams,$rootScope){
+	
+	$rootScope.$state = $state;
+	console.info('articleController');
 });
 
 
@@ -180,7 +189,10 @@ app.factory('BusinessService',function($http){
 				});
 			},
 			getSearchBusiness : function($searchItem, $key, callback){
-				newStr = $searchItem.replace('/',' ').replace('-',' ').replace(/\s+/g,' ');
+				
+				newStr = $searchItem.replace(/-|\//g, "").replace(/\s+/g,' ');
+				 
+				console.info(newStr);
 				
 				if($key == 'q'){
 					return $http.get(jsonData+'?q='+newStr)
