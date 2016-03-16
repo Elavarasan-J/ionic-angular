@@ -1,21 +1,21 @@
-<ion-view view-title="Nos coups de coeur !">
+<ion-view view-title="Nos coups de coeur !" hide-back-button="false">
 	<ion-content>
 	  <ion-list>
-		<ion-item>
+		<ion-item ng-repeat="list in articleList">
 			<div class="favorite-wrap">
 				
-				<div class="img-wrapper">
+				<!--<div class="img-wrapper">
 					<img class="img-responsive" src="../img/favorite-img.png"/>
 					<img class="heart" src="../img/like.png"/>
-				</div>
+				</div>-->
 				
-				<h3>Planète Sports et loisirs</h3>
+				<h3>{{list.titre}}</h3>
 				
-				<p>PLANETE SPORTS & LOISIRS basée sur l’île de Ré à LOIX dans le village artisanal, est un concept unique en France. C’est une société dédiée aux sports et loisirs sur une surface de plus de 1000 M2. Un site école de 4 hectares est également utilisé pour la pratique des ...</p>
-				<a href="#">En savoir plus</a>
+				<p>{{list.descriptif}}</p>
+				<a ng-click="viewArticle(list.id_article)">En savoir plus</a>
 			</div>
 		</ion-item>
-  
+		
 	  </ion-list>
 	</ion-content>
 </ion-view>

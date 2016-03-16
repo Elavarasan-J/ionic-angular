@@ -1,0 +1,74 @@
+<ion-view view-title="{{articleList.titre}}" hide-back-button=false>
+	<ion-content>		 
+		<ion-list>
+			<ion-item class="no-border">
+				<div class="favorite-view-wrapper">
+					
+					<ng-map class="mb20" zoom="12" center="[{{articleList.lat}}, {{articleList.lon}}]">
+						<marker draggable="false" position="{{articleList.lat}}, {{articleList.lon}}" icon="{url:'../img/map-marker.png',scaledSize:[25,40],origin: [0,0],anchor: [11,44]}"></marker>
+					</ng-map>
+					
+					
+					<h2>{{articleList.titre}}</h2>
+					<p class="text-blue">{{articleList.sub_titre}}</p>
+					
+					<h2>DESCRIPTIF</h2>
+					<p>
+						{{articleList.descriptif}} 
+					</p>
+					
+					<h2>COORDONNEES</h2>
+					<address>
+						 {{articleList.texte}} 
+					</address>
+					
+					<!--<div class="contact-wrapper">
+						<p>Tel : 05 46 29 66 71 </p>
+						<p>eMail : contact@planete-sports-loisirs.com</p>
+					</div>-->
+					
+					<h2>Comments</h2>
+					<div class="posted-comment" ng-repeat="comment in articleComment">
+						<h3>Posted by <strong>{{comment.nom}} </strong></h3>
+						<p>{{comment.comment}}</p>
+						<img style="width:80px;" src="../img/{{comment.star}}.png"/>
+					</div>
+					
+					<!--<div class="posted-comment">
+						<h3>Posted by <strong>Test user </strong></h3>
+						<p>Super hotel....iljkutgbtlmkbkkl,m,glgkjgjkggjmllmmlhk`mmklmùzr ^$b z^$$$$$$$$$$$$$$ ^pk </p>
+						<div class="raty" location-raty></div>
+					</div>
+					
+					<div class="posted-comment">
+						<h3>Posted by <strong>Test user </strong></h3>
+						<p>Super hotel....iljkutgbtlmkbkkl,m,glgkjgjkggjmllmmlhk`mmklmùzr ^$b z^$$$$$$$$$$$$$$ ^pk </p>
+						<div class="raty" location-raty></div>
+					</div>-->
+					
+					<h2>Ecrire un commentaire</h2>
+					<div class="comment-wrap">
+						<form>
+							<div class="list">
+							  <label class="item item-input">
+								<input type="text" placeholder="Nom">
+							  </label>
+							  <label class="item item-input">
+								<textarea placeholder="Entrez un commentaire"></textarea>
+							  </label>
+								
+							  <button class="button post-button button-assertive">
+								Envoyer
+							  </button>
+
+							</div>
+						</form>
+					</div>
+					
+					<!--<div class="raty" location-raty></div>-->
+					
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

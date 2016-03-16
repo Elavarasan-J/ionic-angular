@@ -23,7 +23,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 @import "www/lib/ionic/scss/ionic";
  
- 
+ .text-blue
+{
+	color: #3498d8 !important;
+}
 .business-list-wrapper
 {
 	>h2
@@ -32,10 +35,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		text-transform: uppercase;
 		font-size: 16px;
 		line-height: 24px;
-	}
-	.text-blue
-	{
-		color: #3498d8;
 	}
 	p
 	{
@@ -337,8 +336,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 {
 	>h3
 	{
-		font-size: 16px;
-		line-height: 24px;
+		font-size: 18px;
+		line-height: 27px;
 		text-transform: uppercase;
 		color: #ff1f20;
 		margin: 10px 0;
@@ -347,6 +346,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	{
 		white-space: normal;
 		margin: 10px 0;
+		height: 112px;
 	}
 	>a
 	{
@@ -362,5 +362,81 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		position: absolute;
 		top: -10px;
 		left: -2px;
+	}
+}
+.favorite-view-wrapper
+{
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: 300;
+	>h2
+	{
+		text-transform: uppercase;
+		font-size: 16px;
+		line-height: 24px;
+		margin-bottom: 5px;
+		color: #333;
+		font-weight: 300;
+	}
+	>p
+	{
+		white-space: normal;
+	}
+	>p,>address
+	{
+		margin-bottom: 15px;
+	}
+	>address
+	{
+		color: #666;
+		white-space: normal;
+		line-height: 26px;
+	}
+}
+.contact-wrapper
+{
+	margin-bottom: 15px;
+}
+.posted-comment
+{
+	margin: 10px 0;
+	>h3
+	{
+		font-weight: 300;
+		>strong
+		{
+			color: #333;
+		}
+	}
+}
+.comment-wrap
+{
+	.list
+	{
+		.item
+		{
+			background: #fff !important;
+			margin: 10px 0;
+			border-radius: 2px;
+			border-color: #ccc;
+			>input
+			{
+				height: 26px;
+			}
+			>textarea,>input
+			{
+				font-size: 14px;
+			}
+		}
+	}
+}
+.post-button
+{
+	&.button
+	{
+		min-height: 32px;
+		line-height: 20px;
+		border-radius: 2px;
+		font-size: 14px;
 	}
 }

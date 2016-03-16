@@ -20,6 +20,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
 })
+.directive('locationRaty', function(){
+	return{
+		type : 'A',
+		link : function(scope, element, attrs){
+			$(element).raty({
+					starHalf     : '../img/star-half.png',
+					starOff      : '../img/star-off.png',
+					starOn       : '../img/star-on.png',
+			});
+		}
+	}
+})
 
 .config(function($ionicConfigProvider){
 	$ionicConfigProvider.views.maxCache(33);
@@ -344,10 +356,21 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
   .state('app.favorites', {
       url: '/favorites',
+	  params: {myParam: null},
       views: {
         'menuContent': {
           templateUrl: 'templates/our-favorites.html',
-		  controller: 'articleController'
+		  controller: 'articleListController'
+        }
+      }
+    })
+  .state('app.view-favorite', {
+      url: '/view-favorite',
+	  params:{articleData : null, articleComment:null},
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/view-favorite.html',
+		  controller: 'articleViewController'
         }
       }
     })
@@ -355,3 +378,4 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');
 });
+

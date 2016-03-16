@@ -123,13 +123,6 @@ app.controller('navigationController', function($scope, $ionicHistory, $state, B
 	 
 });
 
-// articleController
-app.controller('articleController', function($scope, $ionicHistory, $state, BusinessService, $stateParams,$rootScope){
-	
-	$rootScope.$state = $state;
-	console.info('articleController');
-});
-
 
 //businessSortController
 app.controller('businessSortController',function($scope, $state, BusinessService, $stateParams, $rootScope){
@@ -174,6 +167,53 @@ app.controller('businessSortViewController', function($scope, $stateParams, Busi
 		console.log(map)
 	});
 });
+
+
+// articleController
+app.controller('articleController', function($scope, $ionicHistory, $state, $stateParams, $rootScope, ArticleService){
+
+	$rootScope.$state = $state;
+	
+	$scope.getArticle = function(){
+			ArticleService.getArticles(function(data, status){
+				if(status){
+					return $state.go('app.favorites', { myParam : data.article_list});
+				}else{
+					console.info('Else');
+				}
+		})
+	}
+});
+
+
+// articleListController
+app.controller('articleListController', function($scope, $state, $stateParams, $rootScope, ArticleService){
+	$rootScope.$state = $state;
+	$rootScope.articleList = [];
+	$rootScope.articleList = $stateParams.myParam;
+ 
+	$scope.viewArticle = function(articleId){
+		ArticleService.getArticleById(articleId, function(data,status){
+			if(status){
+				return $state.go('app.view-favorite', { articleData : data.articles, articleComment:data.comment});
+			}else{
+				console.info('Error');
+			}
+		})
+	}
+	
+});
+
+
+// articleViewController
+app.controller('articleViewController', function($scope, $ionicHistory, $state, $stateParams, $rootScope, ArticleService){
+	$rootScope.$state = $state;
+	
+	$rootScope.articleList  = $stateParams.articleData;
+	$scope.articleComment = [];
+	$scope.articleComment = $stateParams.articleComment;	
+});
+
 
 
 // BusinessService
@@ -234,3 +274,30 @@ app.factory('BusinessService',function($http){
 		}
 });
 
+
+// AticleService
+app.factory('ArticleService', function($http){
+	var jsonURL = 'http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php';
+	var articles = [], articleName;
+	
+	return {
+		getArticles : function(callback){
+			return $http.get(jsonURL+'?article')
+			.success(function(data){
+				return callback(data, true);
+			})
+			.error(function(data){
+				return callback(data, false);
+			})
+		},
+		getArticleById :function(id, callback){
+			return $http.get(jsonURL+'?article_id='+id)
+			.success(function(data){
+				return callback(data, true);
+			})
+			.error(function(data){
+				return callback(data, false);
+			})
+		}
+	}
+});
