@@ -1,15 +1,20 @@
 <ion-view view-title="{{articleList.titre}}" hide-back-button=false>
 	<ion-content>		 
 		<ion-list>
+			<div class="loader" ng-show="loaderIosIcon">
+				 <ion-spinner icon="android"></ion-spinner>
+			</div>
+
 			<ion-item class="no-border">
 				<div class="favorite-view-wrapper">
 					
 					<ng-map class="mb20" zoom="12" center="[{{articleList.lat}}, {{articleList.lon}}]">
-						<marker draggable="false" position="{{articleList.lat}}, {{articleList.lon}}" icon="{url:'../img/map-marker.png',scaledSize:[25,40],origin: [0,0],anchor: [11,44]}"></marker>
+						<marker draggable="false" position="{{articleList.lat}}, {{articleList.lon}}"></marker>
 					</ng-map>
-					
+					 <!--icon="{url:'../img/map-marker.png',scaledSize:[25,40],origin: [0,0],anchor: [11,44]}"-->
 					
 					<h2>{{articleList.titre}}</h2>
+					<img style="width:90px;" ng-src="./img/{{articleList.avg_star}}.png"/>
 					<p class="text-blue">{{articleList.sub_titre}}</p>
 					
 					<h2>DESCRIPTIF</h2>
@@ -21,40 +26,26 @@
 					<address>
 						 {{articleList.texte}} 
 					</address>
-					
-					<!--<div class="contact-wrapper">
-						<p>Tel : 05 46 29 66 71 </p>
-						<p>eMail : contact@planete-sports-loisirs.com</p>
-					</div>-->
-					
+ 
 					<h2>Comments</h2>
 					<div class="posted-comment" ng-repeat="comment in articleComment">
 						<h3>Posted by <strong>{{comment.nom}} </strong></h3>
 						<p>{{comment.comment}}</p>
-						<img style="width:80px;" src="../img/{{comment.star}}.png"/>
+						<img style="width:80px;" ng-src="./img/{{comment.star}}.png"/>
 					</div>
-					
-					<!--<div class="posted-comment">
-						<h3>Posted by <strong>Test user </strong></h3>
-						<p>Super hotel....iljkutgbtlmkbkkl,m,glgkjgjkggjmllmmlhk`mmklmùzr ^$b z^$$$$$$$$$$$$$$ ^pk </p>
-						<div class="raty" location-raty></div>
-					</div>
-					
-					<div class="posted-comment">
-						<h3>Posted by <strong>Test user </strong></h3>
-						<p>Super hotel....iljkutgbtlmkbkkl,m,glgkjgjkggjmllmmlhk`mmklmùzr ^$b z^$$$$$$$$$$$$$$ ^pk </p>
-						<div class="raty" location-raty></div>
-					</div>-->
 					
 					<h2>Ecrire un commentaire</h2>
 					<div class="comment-wrap">
-						<form>
+						<form ng-submit="postReview(name,comment,articleList.id_article)">
 							<div class="list">
+						 
+							  <div post-rating class="rating review-rating"></div>
+							  
 							  <label class="item item-input">
-								<input type="text" placeholder="Nom">
+								<input type="text" placeholder="Nom" ng-model="postDetail.name">
 							  </label>
 							  <label class="item item-input">
-								<textarea placeholder="Entrez un commentaire"></textarea>
+								<textarea placeholder="Entrez un commentaire" ng-model="postDetail.comment"></textarea>
 							  </label>
 								
 							  <button class="button post-button button-assertive">

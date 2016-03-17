@@ -1,6 +1,10 @@
 <ion-view view-title="Nos coups de coeur !" hide-back-button="false">
 	<ion-content>
 	  <ion-list>
+		<div class="loader" ng-show="loaderIcon">
+			 <ion-spinner icon="android"></ion-spinner>
+		</div>
+		  
 		<ion-item ng-repeat="list in articleList">
 			<div class="favorite-wrap">
 				
@@ -16,6 +20,10 @@
 			</div>
 		</ion-item>
 		
+		<ion-item ng-show="!loaderIcon" ng-if="articleList.length <= 0">
+			<p>Pas de favori trouvé</p>
+		</ion-item>
+
 	  </ion-list>
 	</ion-content>
 </ion-view>

@@ -173,13 +173,15 @@ app.controller('businessSortViewController', function($scope, $stateParams, Busi
 app.controller('articleController', function($scope, $ionicHistory, $state, $stateParams, $rootScope, ArticleService){
 
 	$rootScope.$state = $state;
-	
 	$scope.getArticle = function(){
+			$rootScope.loaderIcon = true;
 			ArticleService.getArticles(function(data, status){
 				if(status){
+					$rootScope.loaderIcon = false;
 					return $state.go('app.favorites', { myParam : data.article_list});
 				}else{
-					console.info('Else');
+					$rootScope.loaderIcon = false;
+					return $state.go('app.favorites', { myParam : []});
 				}
 		})
 	}
@@ -189,15 +191,16 @@ app.controller('articleController', function($scope, $ionicHistory, $state, $sta
 // articleListController
 app.controller('articleListController', function($scope, $state, $stateParams, $rootScope, ArticleService){
 	$rootScope.$state = $state;
-	$rootScope.articleList = [];
-	$rootScope.articleList = $stateParams.myParam;
- 
+	$scope.articleList = [];
+	$scope.articleList = $stateParams.myParam;
 	$scope.viewArticle = function(articleId){
+		$rootScope.loaderIosIcon = true;
 		ArticleService.getArticleById(articleId, function(data,status){
 			if(status){
+				$rootScope.loaderIosIcon = false;
 				return $state.go('app.view-favorite', { articleData : data.articles, articleComment:data.comment});
 			}else{
-				console.info('Error');
+				$rootScope.loaderIosIcon = false;
 			}
 		})
 	}
@@ -206,12 +209,43 @@ app.controller('articleListController', function($scope, $state, $stateParams, $
 
 
 // articleViewController
-app.controller('articleViewController', function($scope, $ionicHistory, $state, $stateParams, $rootScope, ArticleService){
+app.controller('articleViewController', function($scope, $ionicHistory, $state, $stateParams, $rootScope, ArticleService,$http,$ionicPopup){
 	$rootScope.$state = $state;
 	
-	$rootScope.articleList  = $stateParams.articleData;
+	$scope.articleList  = $stateParams.articleData;
 	$scope.articleComment = [];
-	$scope.articleComment = $stateParams.articleComment;	
+	$scope.articleComment = $stateParams.articleComment;
+	
+	$scope.postDetail = {name:'',comment:''};
+	$scope.postReview = function(name,comment,articleId){
+		
+		var reviewScore = $('input[name="score"]').val();
+		 return $http.post("http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php", {id_article:articleId,comment:$scope.postDetail.comment,nom:$scope.postDetail.name,star:reviewScore})
+		 .success(function(data){
+			 
+			 var alertPopup = $ionicPopup.alert({
+				 title: 'Le succès!',
+				 template: 'Votre commentaire publié'
+			   });
+
+			   alertPopup.then(function(res) {
+				  $scope.postDetail = {name:'',comment:''};
+				  $('.review-rating img').attr('src','./img/star-off.png'); 
+			   });
+			return data;
+		 })
+		 .error(function(data){
+			var alertPopup = $ionicPopup.alert({
+				 title: 'Erreur!',
+				 template: 'Erreur lors de poster votre avis'
+			   });
+
+			   alertPopup.then(function(res) {
+				  $scope.postDetail = {name:'',comment:''};
+				  $('.review-rating img').attr('src','./img/star-off.png'); 
+			   });
+		 })
+	}
 });
 
 

@@ -9936,7 +9936,7 @@ a.button {
   font-size: 18px;
   line-height: 27px;
   text-transform: uppercase;
-  color: #ff1f20;
+  color: #222;
   margin: 10px 0; }
 
 .favorite-wrap p {
@@ -9945,7 +9945,8 @@ a.button {
   height: 112px; }
 
 .favorite-wrap > a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 .img-wrapper {
   position: relative;
@@ -9964,7 +9965,7 @@ a.button {
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 5px;
-    color: #333;
+    color: #202020;
     font-weight: 300; }
   .favorite-view-wrapper > p {
     white-space: normal; }
@@ -10000,3 +10001,14 @@ a.button {
   line-height: 20px;
   border-radius: 2px;
   font-size: 14px; }
+
+.rating {
+  margin: 10px 0 5px;
+  display: inline-block;
+  vertical-align: middle; }
+
+.popup-body {
+  text-align: center; }
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.5); }

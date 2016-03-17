@@ -20,14 +20,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
 })
-.directive('locationRaty', function(){
+.directive('postRating', function(){
 	return{
 		type : 'A',
 		link : function(scope, element, attrs){
 			$(element).raty({
-					starHalf     : '../img/star-half.png',
-					starOff      : '../img/star-off.png',
-					starOn       : '../img/star-on.png',
+					half : true,
+					starHalf : './img/star-half.png',
+					starOff : './img/star-off.png',
+					starOn : './img/star-on.png'
 			});
 		}
 	}

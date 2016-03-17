@@ -29,7 +29,7 @@
 				</div>
 			</ion-item>
 			
-			<ion-item ng-if="listItems.error == 'Not found' || listItems.length <= 0">
+			<ion-item ng-show="!loaderIcon" ng-if="listItems.error == 'Not found' || listItems.length <= 0">
 				<p>Aucun résultat</p>
 			</ion-item>
 			
