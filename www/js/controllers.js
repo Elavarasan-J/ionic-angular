@@ -15,6 +15,7 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 	$rootScope.$state = $state;
 	$scope.listItems = [];
 	$scope.viewTitle = '';
+	$scope.searchItem = '';
 	$scope.moreDataAvailable = false;
 	var spliceArray, listLength, arrayLength, start = 0, end = 5, listIndex;
 	
@@ -216,11 +217,10 @@ app.controller('articleViewController', function($scope, $ionicHistory, $state, 
 	$scope.articleComment = [];
 	$scope.articleComment = $stateParams.articleComment;
 	
-	$scope.postDetail = {name:'',comment:''};
+	$scope.postDetail = {name:'',comment:'',star:'0.5'};
 	$scope.postReview = function(name,comment,articleId){
 		
-		var reviewScore = $('input[name="score"]').val();
-		 return $http.post("http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php", {id_article:articleId,comment:$scope.postDetail.comment,nom:$scope.postDetail.name,star:reviewScore})
+		 return $http.post("http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php", {id_article:articleId,comment:$scope.postDetail.comment,nom:$scope.postDetail.name,star:$scope.postDetail.star})
 		 .success(function(data){
 			 
 			 var alertPopup = $ionicPopup.alert({
@@ -229,8 +229,7 @@ app.controller('articleViewController', function($scope, $ionicHistory, $state, 
 			   });
 
 			   alertPopup.then(function(res) {
-				  $scope.postDetail = {name:'',comment:''};
-				  $('.review-rating img').attr('src','./img/star-off.png'); 
+				  $scope.postDetail = {name:'',comment:'',star:'0.5'};
 			   });
 			return data;
 		 })
@@ -241,8 +240,7 @@ app.controller('articleViewController', function($scope, $ionicHistory, $state, 
 			   });
 
 			   alertPopup.then(function(res) {
-				  $scope.postDetail = {name:'',comment:''};
-				  $('.review-rating img').attr('src','./img/star-off.png'); 
+				  $scope.postDetail = {name:'',comment:'',star:'0.5'};
 			   });
 		 })
 	}

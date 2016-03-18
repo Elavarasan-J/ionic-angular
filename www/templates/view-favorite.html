@@ -11,6 +11,7 @@
 					<ng-map class="mb20" zoom="12" center="[{{articleList.lat}}, {{articleList.lon}}]">
 						<marker draggable="false" position="{{articleList.lat}}, {{articleList.lon}}"></marker>
 					</ng-map>
+					
 					 <!--icon="{url:'../img/map-marker.png',scaledSize:[25,40],origin: [0,0],anchor: [11,44]}"-->
 					
 					<h2>{{articleList.titre}}</h2>
@@ -38,8 +39,25 @@
 					<div class="comment-wrap">
 						<form ng-submit="postReview(name,comment,articleList.id_article)">
 							<div class="list">
-						 
-							  <div post-rating class="rating review-rating"></div>
+		
+							  <label class="item item-input item-select select-box">
+								<div class="input-label">
+									Évaluation
+								</div>
+								<select ng-model="postDetail.star">
+									<option selected>0</option>
+									<option>0.5</option>
+									<option>1</option>
+									<option>1.5</option>
+									<option>2</option>
+									<option>2.5</option>
+									<option>3</option>
+									<option>3.5</option>
+									<option>4</option>
+									<option>4.5</option>
+									<option>5</option>
+								</select>
+							  </label>
 							  
 							  <label class="item item-input">
 								<input type="text" placeholder="Nom" ng-model="postDetail.name">
@@ -51,7 +69,7 @@
 							  <button class="button post-button button-assertive">
 								Envoyer
 							  </button>
-
+								
 							</div>
 						</form>
 					</div>

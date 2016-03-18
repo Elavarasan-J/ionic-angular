@@ -20,19 +20,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
 })
-.directive('postRating', function(){
-	return{
-		type : 'A',
-		link : function(scope, element, attrs){
-			$(element).raty({
-					half : true,
-					starHalf : './img/star-half.png',
-					starOff : './img/star-off.png',
-					starOn : './img/star-on.png'
-			});
-		}
-	}
-})
 
 .config(function($ionicConfigProvider){
 	$ionicConfigProvider.views.maxCache(33);

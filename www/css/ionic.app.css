@@ -10012,3 +10012,11 @@ a.button {
 
 .backdrop {
   background-color: rgba(0, 0, 0, 0.5); }
+
+.select-box .input-label {
+  padding: 4px 10px 4px 0;
+  font-size: 14px;
+  color: #333; }
+
+.select-box > select {
+  font-size: 14px; }
