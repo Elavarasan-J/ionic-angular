@@ -362,8 +362,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+  .state('app.book-appoinment', {
+      url: '/book-appoinment',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/book-appoinment.html',
+		  controller: 'articleViewController'
+        }
+      }
+    })
  	
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/search');
+  $urlRouterProvider.otherwise('/app/book-appoinment');
 });
 

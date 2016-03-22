@@ -10020,3 +10020,9 @@ a.button {
 
 .select-box > select {
   font-size: 14px; }
+
+.block-field .list {
+  background-color: #fff; }
+
+.appoinmentForm .item input, .appoinmentForm .item textarea, .appoinmentForm .item .item-content {
+  font-size: 14px; }

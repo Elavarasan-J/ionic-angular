@@ -468,3 +468,20 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		font-size: 14px;
 	}
 }
+.block-field
+{
+	.list
+	{
+		background-color: #fff;
+	}
+}
+.appoinmentForm
+{
+	.item
+	{
+		input,textarea,.item-content
+		{
+			font-size: 14px;
+		}
+	}
+}

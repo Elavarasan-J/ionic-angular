@@ -89,6 +89,11 @@ app.controller('businessListController', function($scope, $stateParams, Business
 	$scope.getDirection = function($index){
 			$state.go('app.view-business', { myParam : $scope.listItems[$index]});
 	}
+	
+	
+	$scope.bookAppoinment = function(){
+		$state.go('app.book-appoinment');
+	}
 });
 
 
