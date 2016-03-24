@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,6 +24,20 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($ionicConfigProvider){
 	$ionicConfigProvider.views.maxCache(33);
 })
+
+.directive('timePicker', function(){
+	return{
+		type : 'A',
+		link : function(scope, element, attrs){
+			$(element).timepicker({
+				onSelect : function(){
+					console.info('Time selected !');
+				}
+			});
+		}
+	}
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -367,12 +381,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/book-appoinment.html',
-		  controller: 'articleViewController'
+		  controller: 'appoinmentController'
         }
       }
     })
  	
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/book-appoinment');
+  $urlRouterProvider.otherwise('/app/search');
 });
 

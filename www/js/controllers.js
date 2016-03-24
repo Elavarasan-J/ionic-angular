@@ -1,4 +1,4 @@
-var app = angular.module('starter.controllers', ['ngMap']);
+var app = angular.module('starter.controllers', ['ngMap','pikaday','ui.timepicker']);
 
 app.controller('appController', function($scope, $ionicModal, $timeout) {
 
@@ -249,6 +249,41 @@ app.controller('articleViewController', function($scope, $ionicHistory, $state, 
 			   });
 		 })
 	}
+});
+
+// appoinmentController
+app.controller('appoinmentController', function($scope, $state, $stateParams, $rootScope,$ionicPopup){
+	$scope.appTerms = false;
+	$scope.appDate = "";
+	$scope.appTime = "";
+	$scope.appMsg = "";
+	$scope.appoinmentData = function(d,t,m,tc){
+		console.log(d);
+		console.log(t);
+		console.log(m);
+		console.log(tc);
+	}
+	
+	$scope.term = function($event){
+		   
+			$event.preventDefault();
+			
+			var termCondition = $ionicPopup.confirm({
+				title: 'Terms and conditions',
+				template : 'Are u sure you want to book appoinment?'
+			})
+			termCondition.then(function(res){
+				
+				$scope.appTerms = res;
+				
+				console.info($scope.appTerms)
+				/*if(res){
+					$scope.appTerms = true;
+				}else{
+					$scope.appTerms = false;
+				}*/
+			})	
+		} 
 });
 
 

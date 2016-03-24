@@ -3,18 +3,22 @@
 	  <ion-list>
 		  
 		 <ion-item>
-			<form class="block-field appoinmentForm">
+			<form class="block-field appoinmentForm" ng-submit="appoinmentData(appDate,appTime,appMsg,appTerm)">
 				<div class="list">
 				  <label class="item item-input">
-					<input type="text" placeholder="Date">
+					<input type="text" ng-model="appDate" pikaday="myPickerObject" format="MM/DD/YYYY" placeholder="Date">
 				  </label>
+					
+				  <label class="item item-input position-static">
+					<input type="text" ng-model="appTime" time-picker placeholder="Time">
+				  </label>
+					
 				  <label class="item item-input">
-					<input type="text" placeholder="Time">
+					<textarea  ng-model="appMsg" placeholder="Comments"></textarea>
 				  </label>
-				  <label class="item item-input">
-					<textarea placeholder="Comments"></textarea>
-				  </label>
-				  <ion-checkbox>Terms and conditions</ion-checkbox>
+					
+				  <ion-checkbox ng-model="appTerms" ng-click="term($event);"> Terms and conditions</ion-checkbox>
+					
 				</div>
 				 
 				<button class="button button-block button-positive">Book an appoinment</button>
