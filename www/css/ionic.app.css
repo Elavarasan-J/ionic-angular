@@ -10260,3 +10260,7 @@ a.button {
 .ui-timepicker-list li {
   font-size: 14px;
   line-height: 27px; }
+
+.custom-popup p {
+  font-size: 14px;
+  line-height: 22px; }

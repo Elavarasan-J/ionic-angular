@@ -253,37 +253,42 @@ app.controller('articleViewController', function($scope, $ionicHistory, $state, 
 
 // appoinmentController
 app.controller('appoinmentController', function($scope, $state, $stateParams, $rootScope,$ionicPopup){
-	$scope.appTerms = false;
-	$scope.appDate = "";
-	$scope.appTime = "";
-	$scope.appMsg = "";
-	$scope.appoinmentData = function(d,t,m,tc){
-		console.log(d);
-		console.log(t);
-		console.log(m);
-		console.log(tc);
+	
+	$scope.appData = {appDate:'',appTime:'',appMsg:'',appTerms:false};
+	
+	$scope.agreeTerms = function(){
+		
+		$scope.appData.appTerms = false;
+		
+		var agreePopup = $ionicPopup.show({
+					scope: $scope,
+					title: 'Terms and conditions',
+					templateUrl : 'templates/terms-condition.html'
+				});
+		
+		$scope.agreeButton = function(status){
+			
+			agreePopup.close();
+			
+			if(status){
+				return $scope.appData.appTerms = true;
+			}else{
+				return $scope.appData.appTerms = false;
+			}
+		}
 	}
 	
-	$scope.term = function($event){
-		   
-			$event.preventDefault();
-			
-			var termCondition = $ionicPopup.confirm({
-				title: 'Terms and conditions',
-				template : 'Are u sure you want to book appoinment?'
-			})
-			termCondition.then(function(res){
-				
-				$scope.appTerms = res;
-				
-				console.info($scope.appTerms)
-				/*if(res){
-					$scope.appTerms = true;
-				}else{
-					$scope.appTerms = false;
-				}*/
-			})	
-		} 
+	
+	
+	$scope.appoinmentData = function(d,t,m,tc){
+		console.info('Date : '+ d +',Time : '+ t +',Msg : '+ m + ', TnC :' +tc);
+		/*console.log(d);
+		console.log(t);
+		console.log(m);
+		console.log(tc);*/
+		$scope.appData = {appDate:'',appTime:'',appMsg:'',appTerms:false}
+	}
+	
 });
 
 
