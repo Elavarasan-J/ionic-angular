@@ -9739,7 +9739,8 @@ a.button {
   margin-bottom: 10px;
   text-transform: uppercase;
   font-size: 16px;
-  line-height: 24px; }
+  line-height: 24px;
+  white-space: normal; }
 
 .business-list-wrapper p {
   white-space: normal;
@@ -10264,3 +10265,27 @@ a.button {
 .custom-popup p {
   font-size: 14px;
   line-height: 22px; }
+
+.circle {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin-left: 7px; }
+  .circle.available {
+    background-color: #5cb85c; }
+  .circle.not-available {
+    background-color: #d9534f; }
+  .circle.probably-available {
+    background-color: #eea236; }
+
+.map-wrapper {
+  border-top: 1px solid #1b8dd9; }
+
+.filter {
+  padding: 10px; }
+  .filter > select {
+    width: 100%;
+    padding: 6px 15px;
+    border: 1px solid #89bcde; }

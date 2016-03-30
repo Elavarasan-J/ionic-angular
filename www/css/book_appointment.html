@@ -1,0 +1,251 @@
+[(#REM) RECHERCHE FR]
+<!DOCTYPE html>
+<html lang="#LANG">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	[<meta name="description" content="(#DESCRIPTIF|couper{150}|textebrut)">]
+  	<meta name="keywords" content="">
+
+  	[(#REM) Favicon ]
+    [<link rel="apple-touch-icon-precomposed" sizes="114x114" href="(#CHEMIN{ico/reapps-114.png})" />]
+    [<link rel="apple-touch-icon-precomposed" sizes="76x76" href="(#CHEMIN{ico/reapps-76.png})" />]
+    [<link rel="apple-touch-icon-precomposed" sizes="120x120" href="(#CHEMIN{ico/reapps-120.png})" />]
+    [<link rel="apple-touch-icon-precomposed" sizes="152x152" href="(#CHEMIN{ico/reapps-152.png})" />]
+    [<link rel="icon" type="image/png" href="(#CHEMIN{ico/reapps-32.png})" />]
+    
+    <title>[(#NOM_SITE_SPIP|textebrut)][ - (#SLOGAN_SITE_SPIP|textebrut) ]</title>
+
+	[(#REM) Facebook Open Graph Tags ]            
+	<meta property="og:title" content="">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:url" content="">
+	<meta property="og:description" content="">
+	[(#REM) CSS ]
+  	[<link href="(#CHEMIN{dist/css/bootstrap.min.css}|direction_css)" rel="stylesheet" type="text/css" />]
+    [<link href="(#CHEMIN{dist/css/jquery.datetimepicker.css}|direction_css)" rel="stylesheet" type="text/css" />]
+    [<link href="(#CHEMIN{dist/css/jquery.timepicker.css}|direction_css)" rel="stylesheet" type="text/css" />]
+  
+    [<link href="(#CHEMIN{dist/css/daterange-picker.css}|direction_css)" rel="stylesheet" type="text/css" />]
+    [<link href="(#CHEMIN{dist/css/style.css}|direction_css)" rel="stylesheet" type="text/css" />]
+    
+  	[<link href="(#CHEMIN{yamm/yamm.css}|direction_css)" rel="stylesheet" type="text/css" />]
+  	[<link href="(#CHEMIN{css/reapps-1.css}|direction_css)" rel="stylesheet" type="text/css" />]
+    [<link href="(#CHEMIN{css/reapps-responsive.css}|direction_css)" rel="stylesheet" type="text/css" />]
+  	[<link href="(#CHEMIN{font-awesome-4.0.3/css/font-awesome.min.css}|direction_css)" rel="stylesheet" type="text/css"/>]
+
+	#INSERT_HEAD
+
+</head>
+<body>
+
+	[(#REM) LOGO + TOP MENU]
+	<INCLURE{fond=inclure/top-header} />
+	
+	[(#REM) NAV]
+	<INCLURE{fond=inclure/nav} />
+	
+
+	[(#REM) CAROUSEL]
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+        	<BOUCLE_portfolio_carousel (DOCUMENTS) {id_rubrique} {tout} {mode=image} {extension IN png,jpg} {par num titre, date} {doublons}>
+        		<!-- Items -->
+        		[(#COMPTEUR_BOUCLE|=={1}|?{'<div class="item active animated fadeInRight">', '<div class="item animated fadeInRight">'})]
+        			<img src="[(#FICHIER)]" class="img-responsive" alt="[(#TITRE|attribut_html|couper{80})]"/>
+        			<div class="carousel-caption carousel-caption-rub">
+        				<h1 class="black inline reset-margin">[(#TITRE|attribut_html)]</h1> <span class="grey inline"> - </span> <span class="grey inline">[(#DESCRIPTIF|couper{250})]</span>
+        			</div>
+        		</div>	
+			</BOUCLE_portfolio_carousel>
+				<div class="item active animated fadeInRight">
+					[<img src="(#CHEMIN{img/default-diapo-002.jpg})" class="img-responsive" alt="Default image" />]
+					<div class="carousel-caption carousel-caption-rub">
+                        <h1 class="black inline reset-margin">Title Title1</h1> <span class="grey inline"> - </span> <span class="grey inline">1 - Lore Ipsum Lore Ipsum Lore Ipsum</span>
+                    </div>
+				</div>
+				<div class="item animated fadeInRight">
+					[<img src="(#CHEMIN{img/default-diapo-003.jpg})" class="img-responsive" alt="Default image" />]
+					<div class="carousel-caption carousel-caption-rub">
+        				<h1 class="black inline reset-margin">Title Title2</h1> <span class="grey inline"> - </span> <span class="grey inline">2 -Lore Ipsum Lore Ipsum Lore Ipsum</span>
+                    </div>
+				</div>
+			<//BOUCLE_portfolio_carousel>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+           	<i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+    <?php 
+        session_start();
+       if($_SESSION["error_message"]){
+    ?>
+     <div class="alert alert-danger"><?php echo $_SESSION["error_message"];?></div>
+    <?php
+        unset($_SESSION['error_message']);
+    } ?>
+    <?php 
+        session_start();
+       if($_SESSION["success_message"]){
+    ?>
+     <div class="alert alert-success"><?php echo $_SESSION["success_message"];?></div>
+    <?php
+        unset($_SESSION['success_message']);
+    } ?>
+    #SESSION_SET{id_busines, #ENV{id_busines}}
+     <div class="ajax">
+        #FORMULAIRE_BOOK_APPOINTMENTS
+    </div>
+
+    [(#REM) FOOTER]
+  <INCLURE{fond=inclure/footer} />
+
+  <!-- ================================================== -->
+    <!-- JavaScript Placed at the end of the document so the pages load faster -->
+    <script src="#CHEMIN{dist/js/bootstrap.min.js}"></script>
+    
+    <script src="#CHEMIN{dist/js/jquery-ui.js}"></script>
+    
+    <script src="#CHEMIN{dist/js/moment.min.js}"></script>
+    <script src="#CHEMIN{dist/js/jquery.datetimepicker.full.js}"></script>
+    <script src="#CHEMIN{dist/js/jquery.timepicker.js}"></script>
+    <script src="#CHEMIN{dist/js/daterangepicker.js}"></script> 
+    <script type="text/javascript">
+      $(document).on('click', '.yamm .dropdown-menu', function(e) {
+        e.stopPropagation()
+    });
+    var id=#ENV{id_busines};
+    var available_days=[];
+   var dateToday = new Date();
+   
+    function DisableDays(date) {
+      var day = date.getDay();
+     // If day == 1 then it is MOnday
+     for(var i=0;i<available_days.length;i++){
+        if (day == available_days[i]) {
+            return [false]; 
+        }
+     }
+    }
+      
+function max_times(end_time){
+    if(end_time=="00:00:00"){
+       hours="23";
+       minutes="45"; 
+    }
+    else{
+        time=end_time.split(':');
+        hours=parseInt(time[0]);
+        minutes=parseInt(time[1]);
+        if(minutes==0){
+            minutes="00";
+            hours=hours-1;
+        }else{
+            minutes=minutes-15;
+        }
+    }
+    return hours+":"+minutes;
+}
+    
+  function round_off_minutes(hours,minutes){
+    min=15*Math.round(minutes/15)
+     console.info("before hours"+hours);
+    if(min==60){
+        min="00"
+        hours=hours+1;
+    }
+    return hours+":"+min;
+  }
+$("#datetimepicker2").change(function(){
+    if($.trim($("#datetimepicker2").val()) != "") {
+        var booking_date = $('#datetimepicker2').val();
+        $("input.timepicker").val("");
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        if(dd<10) {
+            dd='0'+dd
+        } 
+        if(mm<10) {
+            mm='0'+mm
+        } 
+        today = yyyy+'-'+mm+'-'+dd;
+        var d1 = Date.parse(booking_date);
+        var d2 = Date.parse(today);
+        var date=new Date(booking_date); 
+        var weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+        var day = weekdays[date.getDay()];
+        var hide_time=[];
+        $.get("./business_available.php?id_business="+id+"&date="+booking_date, function(datas, status){
+            var booking_time = JSON.parse(datas); 
+            hide_time=booking_time;
+        });
+            $.get("./business_available.php?id_business="+id+"&day="+day, function(data, status){
+            var data = JSON.parse(data);   
+            var datas=data[0];
+            var start_time=datas['start_time'];
+            var end_time=max_times(datas['end_time']);
+            var mintime;
+            if (d1 == d2) {
+            var current_date = new Date();
+            var hours=current_date.getHours();
+            var minutes=current_date.getMinutes();
+            var second=current_date.getSeconds();
+            var current_time=hours+":"+minutes+":"+second;
+            console.info("current time"+current_time);
+              if (current_time > start_time && end_time > current_time){
+                mintime=round_off_minutes(hours,minutes);
+                timepicker_initialize(mintime,end_time,hide_time);
+              } else if(current_time < start_time && end_time > current_time){
+                mintime=start_time;
+                timepicker_initialize(mintime,end_time,hide_time);
+            }else{
+            }
+        }
+        else{
+            mintime=start_time;
+            timepicker_initialize(mintime,end_time,hide_time);
+        }   
+        });
+        }
+    });
+   function timepicker_initialize (min_time,max_time,hide_time) {  
+                    $('input.timepicker').timepicker('remove');
+                    $('input.timepicker').timepicker({'step': 15, timeFormat: 'H:i','minTime': min_time,'maxTime':max_time,'disableTimeRanges': hide_time});
+            }
+    $(function(){
+        $(document).ready(function(){ 
+            $.get("./business_available.php?id_business="+id, function(data, status){
+                    var data = JSON.parse(data);   
+                    //var datas=data[0];   
+                var days_data=data.business_not_available_days;
+                if(days_data.length>0){
+                    available_days=days_data;
+                }else{
+                    available_days=[0,1,2,3,4,5,6];
+                }
+            });
+            $( "#datetimepicker2" ).datetimepicker({
+                 beforeShowDay: DisableDays,
+                 lang:'ch',
+                timepicker:false,
+                format:'Y-m-d',
+                formatDate:'Y-m-d',
+                minDate: dateToday,
+                minuteInterval:15
+            });
+        });
+    });
+  </script>
+</body>
+</html>
+
+

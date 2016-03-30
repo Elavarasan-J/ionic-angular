@@ -2,12 +2,17 @@
 	 
 	<ion-content>		 
 		<ion-list>
+			<div ng-hide="listItems.error == 'Not found' || listItems.length <= 0" class="filter">
+				<select ng-model="city" ng-change="cityFilter(city)">
+					<option ng-repeat="name in cities" value="{{name}}">{{name}}</option>
+				</select>
+			</div>
 			
 			<div class="loader" ng-show="loaderIcon">
 				 <ion-spinner icon="android"></ion-spinner>
 			</div>
 			
-			<div ng-hide="listItems.error == 'Not found' || listItems.length <= 0 "> 
+			<div class="map-wrapper" ng-hide="listItems.error == 'Not found' || listItems.length <= 0 "> 
 				<ng-map zoom="8" center="[46.190101, -1.395228]">
 					<marker draggable="false" ng-repeat="list in listItems" position="{{list.latitude}},{{list.longitude}}" no-watcher="true"></marker>
 				</ng-map>
@@ -15,7 +20,7 @@
 			
 			<ion-item ng-repeat="list in listItems" ng-class="{'hide' : listItems.error}">
 				<div class="business-list-wrapper">
-					<h2><a ng-click="viewBusiness($index)" class="business-name">{{list.nom}}</a></h2>
+					<h2><a ng-click="viewBusiness($index)" class="business-name">{{list.nom}}</a> <span class="circle {{list.available}}"></span></h2>
 					<p class="text-blue">{{list.ville}}</p>
 					
 					<div class="list-inner-content">

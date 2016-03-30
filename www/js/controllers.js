@@ -63,7 +63,7 @@ app.controller('indexController', function($scope, $state, $ionicSlideBoxDelegat
 
 
 // businessListController
-app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, $state ,NgMap){
+app.controller('businessListController', function($scope, $stateParams, BusinessService, $rootScope, $ionicHistory, $state ,NgMap, $http){
 	$scope.listItems = [];
 	$rootScope.loaderIcon = true;
 	$rootScope.$state = $state;
@@ -77,6 +77,31 @@ app.controller('businessListController', function($scope, $stateParams, Business
 				return $scope.listItems = [];
 			}
 	});
+	
+	// City filter
+	$scope.cities = [];
+	$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php?ville')
+		.success(function(data){		
+			return $scope.cities = data.business_city;
+		})
+		.error(function(data){
+			return $scope.cities = [];
+		});
+	
+	$scope.city = $scope.cities[0];
+	
+	$scope.cityFilter = function(name){
+		$rootScope.loaderIcon = true;
+		BusinessService.getSearchBusiness(name, "ville_nom", function(response,status){
+			if(status){
+					$rootScope.loaderIcon = false;
+					return $scope.listItems = response.business_list;
+				}else{
+					$rootScope.loaderIcon = false;
+					return $scope.listItems = [];
+				}
+		});
+	}
 	
 	NgMap.getMap().then(function(map) {
 	/*	console.info('markers', map.markers);*/
@@ -267,9 +292,7 @@ app.controller('appoinmentController', function($scope, $state, $stateParams, $r
 				});
 		
 		$scope.agreeButton = function(status){
-			
 			agreePopup.close();
-			
 			if(status){
 				return $scope.appData.appTerms = true;
 			}else{
@@ -340,6 +363,15 @@ app.factory('BusinessService',function($http){
 				}
 				else if($key == 'categ_name'){
 					return $http.get(jsonData+'?categ_name='+newStr)
+					.success(function(data){
+						return callback(data, true);
+					})
+					.error(function(data){
+						return callback(data, false);
+					})
+				}
+				else if($key == 'ville_nom'){
+					return $http.get(jsonData+'?ville_nom='+$searchItem)
 					.success(function(data){
 						return callback(data, true);
 					})
