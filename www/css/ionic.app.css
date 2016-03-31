@@ -10289,3 +10289,12 @@ a.button {
     width: 100%;
     padding: 6px 15px;
     border: 1px solid #89bcde; }
+
+.mb15 {
+  margin-bottom: 8px; }
+
+.filter-label {
+  font-size: 15px;
+  line-height: 22px;
+  margin-bottom: 3px;
+  display: block; }

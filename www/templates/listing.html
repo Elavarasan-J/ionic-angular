@@ -3,6 +3,7 @@
 	<ion-content>		 
 		<ion-list>
 			<div ng-hide="listItems.error == 'Not found' || listItems.length <= 0" class="filter">
+				<label class="filter-label">Filter by city :</label>
 				<select ng-model="city" ng-change="cityFilter(city)">
 					<option ng-repeat="name in cities" value="{{name}}">{{name}}</option>
 				</select>
@@ -30,8 +31,8 @@
 						<p ng-if="list.fax!=''" ng-class="{ 'hide' : !list.fax }">Fax : {{list.fax}} </p>
 					</div>
 					
-					<button ng-click="viewBusiness($index)" class="button button-outline button-positive button-medium">Obtenir l'itinéraire</button>
-					 
+					<button ng-click="viewBusiness($index)" class="button button-outline button-positive button-medium mb15">Obtenir l'itinéraire</button>
+					<br>
 					<button ng-click="bookAppoinment();" class="button button-outline button-positive button-medium">Réservez appoinment</button>
 				</div>
 			</ion-item>

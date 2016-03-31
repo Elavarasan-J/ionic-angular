@@ -54,6 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 	function DisableDays(date){
 		var day = date.getDay();
 		
+		console.info(available_days)
 		 // If day == 1 then it is MOnday
 		 for(var i=0;i<available_days.length;i++){
 			if (day == available_days[i]) {
