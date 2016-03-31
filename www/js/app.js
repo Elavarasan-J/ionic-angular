@@ -41,15 +41,19 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 	var available_days=[];
    	var dateToday = new Date();
 	
-	$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php?id_business=4514')
+	$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4514')
 		.success(function(data){
-			console.info(data);
+			 var dayList = data.business_not_available_days;
+			 if(dayList.length>0){
+                    available_days = dayList;
+                }else{
+                    available_days = [0,1,2,3,4,5,6];
+                }
 		});
-	
-	console.info(dateToday);
 	
 	function DisableDays(date){
 		var day = date.getDay();
+		
 		 // If day == 1 then it is MOnday
 		 for(var i=0;i<available_days.length;i++){
 			if (day == available_days[i]) {
@@ -57,21 +61,18 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 			}
 		 }
 	}
-
-	function dateToday(){
-		console.info('Exec')
-	}
+ 	
 	return{
 		type : 'A',
 		link : function(scope, element, attrs){
 			$(element).datetimepicker({
-                 beforeShowDay: DisableDays,
-                 lang:'ch',
-                timepicker:false,
-                format:'Y-m-d',
-                formatDate:'Y-m-d',
-                minDate: dateToday,
-                minuteInterval:15
+				beforeShowDay: DisableDays,
+				lang:'ch',
+				timepicker:false,
+				format:'Y-m-d',
+				formatDate:'Y-m-d',
+				minDate: dateToday,
+				minuteInterval:15
 			});
 		}
 	}

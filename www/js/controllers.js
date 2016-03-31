@@ -410,3 +410,4 @@ app.factory('ArticleService', function($http){
 		}
 	}
 });
+
