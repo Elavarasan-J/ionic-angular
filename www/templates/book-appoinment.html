@@ -3,26 +3,26 @@
 	  <ion-list>
 		  
 		 <ion-item>
-			<form class="block-field appoinmentForm" ng-submit="appoinmentData(appData.appDate,appData.appTime,appData.appMsg,appData.appTerms)">
+			<form class="block-field appoinmentForm" ng-submit="appoinmentData(appData.appDate,appData.appTime,appData.appMsg,appData.appTerms,appData.appId)">
 				<div class="list">
 				  <label class="item item-input">
-					<input type="text" ng-model="appData.appDate" pick-date placeholder="Date">
+					<input type="text" ng-model="appData.appDate" id="date" pick-date placeholder="Date">
 				  </label>
 					
 				  <label class="item item-input position-static">
-					<input type="text" ng-model="appData.appTime" time-picker placeholder="Time">
+					<input type="text" id="appTime" ng-model="appData.appTime" time-picker placeholder="Time">
 				  </label>
 					
 				  <label class="item item-input">
 					<textarea  ng-model="appData.appMsg" placeholder="Comments"></textarea>
 				  </label>
 					
-				  <ion-checkbox ng-model="appData.appTerms" ng-change="agreeTerms();"> Terms and conditions</ion-checkbox>
+				  <ion-checkbox ng-model="appData.appTerms" ng-change="agreeTerms();" required> Terms and conditions</ion-checkbox>
 				  	
 				  <!--<input type="checkbox" ng-model="appData.appTerms" ng-click="term($event);"/>-->
 				</div>
 				 
-				<button class="button button-block button-positive">Book an appoinment</button>
+				<button class="button button-block button-positive">Book an appoinment </button>
 			</form>
 		  </ion-item>
 		  

@@ -25,25 +25,16 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 	$ionicConfigProvider.views.maxCache(33);
 })
 
-.directive('timePicker', function(){
-	return{
-		type : 'A',
-		link : function(scope, element, attrs){
-			$(element).timepicker({
-				onSelect : function(){
-					console.info('Time selected !');
-				}
-			});
-		}
-	}
-})
 .directive('pickDate', function($http){
 	var available_days=[];
    	var dateToday = new Date();
 	
-	$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4514')
+	var apiURL = "http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php";
+	
+	$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4515')
 		.success(function(data){
 			 var dayList = data.business_not_available_days;
+			 
 			 if(dayList.length>0){
                     available_days = dayList;
                 }else{
@@ -51,10 +42,10 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
                 }
 		});
 	
+	// Disable days
 	function DisableDays(date){
 		var day = date.getDay();
 		
-		console.info(available_days)
 		 // If day == 1 then it is MOnday
 		 for(var i=0;i<available_days.length;i++){
 			if (day == available_days[i]) {
@@ -62,7 +53,50 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 			}
 		 }
 	}
+	
+	// Max times
+	function maxTimes(end_time){
+		
+		if(end_time == '00:00:00'){
+			hours = "23";
+			minutes = "45"; 
+		}else{
+			time = end_time.split(':');
+			hours = parseInt(time[0]);
+			minutes = parseInt(time [1]);
+			
+			if(minutes == 00){
+				minutes = '00';
+				hours = hours - 1;
+			}else{
+				minutes = minutes - 15;
+			}
+		}
+		
+		return hours + ":" + minutes;
+	}
  	
+	// Round off minutes
+	function round_off_minutes(hours,minutes){
+		min=15*Math.round(minutes/15)
+		if(min==60){
+			min="00"
+			hours=hours+1;
+		}
+		return hours+":"+min;
+	}
+	
+	
+	// Time picker initialize
+	function timepicker_initialize (min_time,max_time,hide_time) {  
+		
+		console.info(min_time);
+		
+		$('#appTime').timepicker('remove');
+		$('#appTime').timepicker({'step': 15, timeFormat: 'H:i','minTime': min_time,'maxTime':max_time,'disableTimeRanges': hide_time});
+	}
+	
+	
 	return{
 		type : 'A',
 		link : function(scope, element, attrs){
@@ -71,10 +105,99 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 				lang:'ch',
 				timepicker:false,
 				format:'Y-m-d',
-				formatDate:'Y-m-d',
 				minDate: dateToday,
-				minuteInterval:15
+				minuteInterval:15,
+				onChangeDateTime:function(currDate,$input){
+					if(($input.val()) != ""){
+						
+						var booking_date,today,dd,mm,yy,date1,date2,date,weekdays,day,hide_time;
+						
+						booking_date = $input.val();
+						$('#appTime').val("");
+						
+						today = new Date();
+						dd = today.getDate();
+						mm = today.getMonth()+1; //January is 0!
+						yyyy = today.getFullYear();
+						
+						if(dd < 10) {
+							dd='0'+dd
+						} 
+						if(mm < 10) {
+							mm='0'+mm
+						} 
+						today = yyyy+'-'+mm+'-'+dd;
+						
+						date1 = Date.parse(booking_date);
+						date2 = Date.parse(today);
+						
+						date = new Date(booking_date)
+						
+						
+						weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+						day = weekdays[date.getDay()];
+						
+						console.info(day);
+						
+						hide_time = [];
+						
+						
+						$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4515&date='+booking_date)
+						.success(function(data){
+            				  	 hide_time = data;
+						});
+						
+						
+						var dataSet,dataSetList,start_time,end_time,minTime,current_date,hours,minutes,seconds,current_time;
+						
+						$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4515&day='+day)
+						.success(function(data){
+            				dataSet = data[0];
+							start_time = dataSet['start_time'];
+							end_time = maxTimes( dataSet['end_time']);
+							
+							console.info('Start time : ' + start_time)
+							
+							if(date1 == date2){
+								console.info('Same date')
+								current_date = new Date();
+								
+								hours = current_date.getHours();
+								minutes = current_date.getMinutes();
+								second = current_date.getSeconds();
+								
+								current_time = hours + ":" + minutes + ":" + second;
+								
+								if(current_time > start_time && end_time > current_time){
+									minTime = round_off_minutes(hours,minutes);
+									timepicker_initialize(minTime,end_time,hide_time);
+								}else if(current_time < start_time && end_time > current_time){
+									minTime = start_time;
+									timepicker_initialize(minTime,end_time,hide_time);
+								}else{
+									console.info('else');
+								}
+							}else{
+								console.info('Diff Part !');
+								minTime = start_time;
+								timepicker_initialize(minTime,end_time,hide_time);
+							}   
+						});
+						
+					}
+					
+				  } // onChangeDateTime
+				
 			});
+		}
+	}
+})
+
+.directive('timePicker', function(){
+	return{
+		type : 'A',
+		link : function(scope, element, attrs){
+			$(element).timepicker();
 		}
 	}
 })
@@ -418,7 +541,7 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
       }
     })
   .state('app.book-appoinment', {
-      url: '/book-appoinment',
+      url: '/book-appoinment/:businessId',
       views: {
         'menuContent': {
           templateUrl: 'templates/book-appoinment.html',

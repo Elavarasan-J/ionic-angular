@@ -116,8 +116,8 @@ app.controller('businessListController', function($scope, $stateParams, Business
 	}
 	
 	
-	$scope.bookAppoinment = function(){
-		$state.go('app.book-appoinment');
+	$scope.bookAppoinment = function(bid){
+		$state.go('app.book-appoinment', { businessId : bid});
 	}
 });
 
@@ -277,9 +277,9 @@ app.controller('articleViewController', function($scope, $ionicHistory, $state, 
 });
 
 // appoinmentController
-app.controller('appoinmentController', function($scope, $state, $stateParams, $rootScope,$ionicPopup){
+app.controller('appoinmentController', function($scope, $state, $stateParams, $rootScope,$ionicPopup,$http){
 	
-	$scope.appData = {appDate:'',appTime:'',appMsg:'',appTerms:false};
+	$scope.appData = {appDate:'',appTime:'',appMsg:'',appTerms:false,appId: $stateParams.businessId};
 	
 	$scope.agreeTerms = function(){
 		
@@ -303,8 +303,17 @@ app.controller('appoinmentController', function($scope, $state, $stateParams, $r
 	
 	
 	
-	$scope.appoinmentData = function(d,t,m,tc){
-		console.info('Date : '+ d +',Time : '+ t +',Msg : '+ m + ', TnC :' +tc);
+	$scope.appoinmentData = function(date,time,msg,tc,appId){
+		
+		/*return $http.post("http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php", {id_business:appId, customer_email:"developerinfo26@gmail.com",time:time,appointment_date:date,description:msg,terms_and_condition:tc})
+		 .success(function(data){
+			return data;
+		 })
+		 .error(function(data){
+			console.info;
+		 })*/
+		
+		 
 		/*console.log(d);
 		console.log(t);
 		console.log(m);
@@ -346,6 +355,7 @@ app.factory('BusinessService',function($http){
 				else if($key == 'categ'){
 					return $http.get(jsonData+'?categ='+newStr)
 					.success(function(data){
+						console.info(data)
 						return callback(data, true);
 					})
 					.error(function(data){
