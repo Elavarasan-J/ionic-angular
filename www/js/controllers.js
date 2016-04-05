@@ -304,21 +304,32 @@ app.controller('appoinmentController', function($scope, $state, $stateParams, $r
 	
 	
 	$scope.appoinmentData = function(date,time,msg,tc,appId){
+		 
 		
-		/*return $http.post("http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php", {id_business:appId, customer_email:"developerinfo26@gmail.com",time:time,appointment_date:date,description:msg,terms_and_condition:tc})
+		var jsonData = {};
+		jsonData["id_business"] = appId;
+		jsonData["customer_email"] = "developerinfo21@gmail.com";
+		jsonData["time"] = time;
+		jsonData["appointment_date"] = date;
+		jsonData["description"] = msg;
+		jsonData["terms_and_condition"] = (tc == true) ? "true" : "false";
+		
+		return $http.post("http://ec2-54-175-185-25.compute-1.amazonaws.com/api.php",jsonData)
 		 .success(function(data){
-			return data;
+			/*$scope.appData = {};*/
+			var alertPopup = $ionicPopup.alert({
+				 title: 'Le succès!',
+				 template: 'Appointment created successfully'
+			   });
+
+			   alertPopup.then(function(res) {
+				 $scope.appData = {};
+				 //$state.go('app.playlists');
+			   });
 		 })
 		 .error(function(data){
-			console.info;
-		 })*/
-		
-		 
-		/*console.log(d);
-		console.log(t);
-		console.log(m);
-		console.log(tc);*/
-		$scope.appData = {appDate:'',appTime:'',appMsg:'',appTerms:false}
+			console.info(data)
+		 })
 	}
 	
 });
@@ -420,4 +431,3 @@ app.factory('ArticleService', function($http){
 		}
 	}
 });
-

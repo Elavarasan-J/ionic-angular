@@ -29,19 +29,9 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 	var available_days=[];
    	var dateToday = new Date();
 	
-	var apiURL = "http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php";
+	/*var apiURL = "http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php";*/
 	
-	$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4515')
-		.success(function(data){
-			 var dayList = data.business_not_available_days;
-			 
-			 if(dayList.length>0){
-                    available_days = dayList;
-                }else{
-                    available_days = [0,1,2,3,4,5,6];
-                }
-		});
-	
+	 
 	// Disable days
 	function DisableDays(date){
 		var day = date.getDay();
@@ -100,6 +90,21 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 	return{
 		type : 'A',
 		link : function(scope, element, attrs){
+			
+			var businessID = attrs.business;
+			
+			$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business='+businessID)
+			.success(function(data){
+				 var dayList = data.business_not_available_days;
+
+				 if(dayList.length > 0){
+						available_days = dayList;
+					}else{
+						console.info('Else condition');
+						available_days = [0,1,2,3,4,5,6];
+					}
+			});
+			
 			$(element).datetimepicker({
 				beforeShowDay: DisableDays,
 				lang:'ch',
@@ -111,6 +116,9 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 					if(($input.val()) != ""){
 						
 						var booking_date,today,dd,mm,yy,date1,date2,date,weekdays,day,hide_time;
+						
+						
+						console.info(businessID);
 						
 						booking_date = $input.val();
 						$('#appTime').val("");
@@ -142,7 +150,7 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 						hide_time = [];
 						
 						
-						$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4515&date='+booking_date)
+						$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business='+businessID+'&date='+booking_date)
 						.success(function(data){
             				  	 hide_time = data;
 						});
@@ -150,7 +158,7 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 						
 						var dataSet,dataSetList,start_time,end_time,minTime,current_date,hours,minutes,seconds,current_time;
 						
-						$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business=4515&day='+day)
+						$http.get('http://ec2-54-175-185-25.compute-1.amazonaws.com/business_available.php?id_business='+businessID+'&day='+day)
 						.success(function(data){
             				dataSet = data[0];
 							start_time = dataSet['start_time'];
@@ -159,7 +167,9 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 							console.info('Start time : ' + start_time)
 							
 							if(date1 == date2){
+								
 								console.info('Same date')
+								
 								current_date = new Date();
 								
 								hours = current_date.getHours();
@@ -197,7 +207,7 @@ angular.module('starter', ['ionic', 'starter.controllers','pikaday'])
 	return{
 		type : 'A',
 		link : function(scope, element, attrs){
-			$(element).timepicker();
+			$(element).timepicker('hide');
 		}
 	}
 })
